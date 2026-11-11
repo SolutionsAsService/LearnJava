@@ -4,23 +4,29 @@
 LESSONS = [
     ("Hello", "hello", "Hello, World",
      "A class, a main method, one line printed.",
-     """<p>Java code lives in <em>classes</em>. A class named <code>Hello</code> goes in a file
+     """<p>Java code lives in <em>classes</em>: a class is a named bundle of data and the
+     methods (named blocks of code) that work on it. A class named <code>Hello</code> goes in a file
      named <code>Hello.java</code>. The program starts at <code>main</code>:
      <code>public</code> (anyone may call it), <code>static</code> (no object is needed to
      call it), and <code>void</code> (it returns nothing). <code>String[] args</code> holds
      any words typed after the program's name.</p>
+     <p>The text “Hello, World!” is stored inside the compiled file, in a part called the
+     <em>constant pool</em>: the table of every name and piece of text a class uses.</p>
      <p><code>javac</code> compiles the file into <code>Hello.class</code>, and <code>java</code>
      runs it on the Java Virtual Machine (the JVM). The <a href="../index.html">home page</a> is
      that very <code>.class</code> file, byte for byte; <a href="../jvm.html">Inside the JVM</a>
      walks through it.</p>""", "1.0"),
     ("Variables", "variables", "Variables and types",
      "Eight primitive types, var, and what happens past the largest int.",
-     """<p>Java has eight <em>primitive</em> types, which hold a value directly:
+     """<p>A <em>type</em> says what kind of value a variable holds. Java has eight
+     <em>primitive</em> types, which hold a plain value directly:
      <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>,
      <code>float</code>, <code>double</code>, <code>char</code> and <code>boolean</code>.
-     Unlike C, their sizes are the same on every machine: an <code>int</code> is always 4 bytes.
-     Everything else, a <code>String</code> included, is an <em>object</em>, reached through a
-     reference.</p>
+     Their sizes are the same on every machine: an <code>int</code> is always 4 bytes (32
+     bits), where in C it depends on the computer. A floating-point type such as
+     <code>double</code> holds numbers with a fractional part. Everything else, a
+     <code>String</code> included, is an <em>object</em>: the variable holds a
+     <em>reference</em>, the address where the object lives.</p>
      <p><code>var</code> (Java 10) lets the compiler infer a local variable's type; the type is
      still fixed. The last line shows overflow: one more than the largest <code>int</code>
      wraps around to the most negative one, silently.</p>""", "10"),
@@ -104,14 +110,16 @@ LESSONS = [
      """<p>A <em>lambda</em>, <code>l -&gt; l.year() &gt; 2000</code>, is a function written in
      place. A <em>method reference</em>, <code>Lang::name</code>, names an existing method
      instead. A <em>stream</em> passes each element through the steps in order; nothing
-     happens until <code>collect</code> asks for the result. All of this arrived in Java 8.</p>""", "16"),
+     happens until <code>collect</code> asks for the result. Lambdas and streams arrived in
+     Java 8; this program also declares a <code>record</code>, which is why it needs Java
+     16.</p>""", "16"),
 
     ("Threads", "threads", "Virtual threads",
-     "Ten thousand tasks, each with its own thread, in a fraction of a second.",
+     "Ten thousand tasks, each with its own thread, all waiting at once.",
      """<p>A <em>thread</em> runs code at the same time as other threads. Platform threads are
      expensive, so programs used to share a few among many tasks. Virtual threads (Java 21) are
      cheap enough to give every task its own: here 10,000 tasks each sleep 10 milliseconds,
-     and the pool finishes them together instead of one after another.</p>
+     and they all wait at the same time. One after another, they would take 100 seconds.</p>
      <p><code>AtomicInteger</code> counts safely from many threads at once; a plain
      <code>int</code> would lose updates. Leaving the <code>try</code> block waits for every
      task, so the count is always 10,000.</p>""", "21"),
@@ -129,7 +137,10 @@ VERSIONS = [
     (2017, "9", "Modules, and JShell for trying code line by line.", False),
     (2018, "10", "<code>var</code>, and a new release every six months, in March and September.", False),
     (2018, "11", "Run a source file directly: <code>java Hello.java</code>.", True),
-    (2021, "17", "Sealed classes; records (final since 16).", True),
+    (2020, "14", "Switch expressions, with <code>-&gt;</code> and a value.", False),
+    (2020, "15", "Text blocks: strings in three double quotes that keep their line breaks.", False),
+    (2021, "16", "Records: a one-line class for plain data.", False),
+    (2021, "17", "Sealed classes.", True),
     (2023, "21", "Virtual threads, record patterns and pattern matching for switch.", True),
     (2025, "25", "The current long-term-support release.", True),
 ]

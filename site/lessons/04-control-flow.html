@@ -22,11 +22,12 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[3]</code> · lesson 4 of 13 · Java 14+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 4 of 13 <span class="idx">lessons[3]</span> · Java 14+</p>
   <h1>Control flow</h1>
   <p class="lede">if, a switch that returns a value, and a while loop.</p>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:997"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:429"></span><span class="seg r6" style="flex-grow:46"></span></div><figcaption><code>ControlFlow.class</code> is 1490 bytes: magic 4, version 4, constant pool 997, header 10, methods 429, attributes 46. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
-  <figcaption><span class="fname">ControlFlow.java</span><span class="fmeta">24 lines</span></figcaption>
+  <figcaption><span class="fname">ControlFlow.java</span><span class="fmeta">25 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">ControlFlow</span> {
     <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
         <span class="tk">int</span> temperature = <span class="tn">18</span>;
@@ -38,8 +39,9 @@
             <span class="tt">System</span>.out.println(<span class="ts">&quot;cold&quot;</span>);
         }
 
+        <span class="tc">// a switch expression: each arrow gives a value</span>
         <span class="tt">String</span> day = <span class="ts">&quot;SAT&quot;</span>;
-        <span class="tt">String</span> kind = <span class="tk">switch</span> (day) {         <span class="tc">// a switch expression returns a value</span>
+        <span class="tt">String</span> kind = <span class="tk">switch</span> (day) {
             <span class="tk">case</span> <span class="ts">&quot;SAT&quot;</span>, <span class="ts">&quot;SUN&quot;</span> -&gt; <span class="ts">&quot;weekend&quot;</span>;
             <span class="tk">default</span> -&gt; <span class="ts">&quot;weekday&quot;</span>;
         };
@@ -66,8 +68,8 @@ SAT is a weekend
      nobody can say in advance how many steps it takes, which is what <code>while</code> is
      for.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="03-strings.html"><span>← lessons[2]</span>Strings</a>
-    <a class="next" href="05-methods.html"><span>lessons[4] →</span>Methods</a>
+    <a class="prev" href="03-strings.html"><span>← lesson 3 · <span class='idx'>lessons[2]</span></span>Strings</a>
+    <a class="next" href="05-methods.html"><span>lesson 5 · <span class='idx'>lessons[4]</span> →</span>Methods</a>
   </nav>
 </article>
 </main>

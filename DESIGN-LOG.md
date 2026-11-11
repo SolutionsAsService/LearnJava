@@ -103,3 +103,63 @@ Depends on: none
 Anchors: Floor WCAG 2.2 Contrast and Perceivability (W3C)
 Intent: `vercel.json` (root and site), `fluid.json`, a root redirect and a root-anchored `.vercelignore`, all checked by the build. The phone is designed first: one breakpoint, `clamp()` type with floors, 16px body, 44px targets and gated hover.
 Mode field: Advanced pole: none; this is the floor. Acceptable pole: the whole of it.
+
+### Panel, WHOLE, round R1 (artifact examined: site at cb8eb52; evidence in panel/R1/EVIDENCE.md; reports in panel/R1/)
+Protocol note: Mace, Holmes, Shklovsky and Gautier ran at the same time, four at once against the limit of three. All eight reports were filed.
+
+| Critic | Anchor used | Observed in the work | Verdict PASS/OBJECT | Requested change |
+|---|---|---|---|---|
+| Critic: Evidence (Cairo) | How Charts Lie (Alberto Cairo) | builds byte-identical; every class-file figure matches `javap -v`; downloads run verbatim; Versions misses 14, 15 and 16; minimums below 8 never checked; "417 bytes of bytecode"; LTS cadence wrong; Streams 16+ unexplained | OBJECT | rows 14, 15, 16; say the check starts at 8; "a 417-byte class file"; correct the LTS line; name the record |
+| Critic: Evidence (Tufte) | The Visual Display of Quantitative Information (Edward Tufte) | the encoding is true (lie factor 1.0, region boundaries match javap); badges cover bytes; the phone legend loses its figures; 9 px phone bytes are texture | OBJECT | badges into a gutter; ranges on phones; trim the caption; relabel region 4 |
+| Critic: Usability (Krug) | Don't Make Me Think (Steve Krug) | probe passes (5 → jvm.html#bytecode); trunk test passes; legend cards look like captions; no "start" on the phone's first screen; tiles are numbers only; `lessons[n]` makes you decode | OBJECT | arrow and destination on cards; a start button on phones; titles on tiles; drop or demote the indices |
+| Critic: Provocateur (Debord) | The Society of the Spectacle (Guy Debord) | "the same on every machine"; "which is why … Android … banks"; "checks/proves" with no check below 8; LTS "every two years"; "official links"; SourceFile is optional; Streams badge; "a fraction of a second" not measured | OBJECT | narrow each claim to what the build backs |
+| Critic: Inclusion (Mace) | The Universal Design principles (Ronald Mace) | focus visible everywhere, 44 px targets, hover gated, tints 8.8–13.4:1; Tab order jumps at 390 (the CSS `order` differs from the DOM); the current page's box-shadow vanishes in forced colours; magic tiles 4.23:1 | OBJECT | DOM order = visual order; a border for the current page; darker magic |
+| Critic: Inclusion (Holmes) | Mismatch (Kat Holmes) | at 390 nothing explains the dump; legend descriptions hidden; "constant pool" and "attributes" not named on their target pages; zero-indexed pager; unglossed terms; no `cd` and no Windows line | OBJECT | a plain line above the dump; descriptions for screen readers; name the parts on the target pages; plain pager; glosses; setup steps |
+| Critic: Provocateur (Shklovsky) | Art as Technique (Viktor Shklovsky) | the dump defeats automatic perception; the magic is headline-sized, not monumental; the device stops at the home page; jvm.html shows no bytes | OBJECT | the magic as the largest thing; each lesson shows its own class bytes; the tinted dump on jvm.html |
+| Critic: Aestheticist (Gautier) | Preface to Mademoiselle de Maupin (Théophile Gautier) | the dump is "useless and beautiful"; badges cover bytes; code cut mid-word at the box edge; "01 , 05" spacing | OBJECT | badges into a gutter; no cut code; fix the spacing |
+
+Andon pulled: no. Dotted pair present: Krug and Debord.
+
+#### Resolutions, round R1
+| Finding | Resolution |
+|---|---|
+| Tufte + Gautier: "badges cover bytes" | ADAPT (M5): the badges moved to a gutter column at the start of the row where each region begins; the first byte of each region gets an inset rule. No badge covers a byte |
+| Tufte: "phone legend loses its figures" | OVERRULE (premise refuted: measured trade). The byte ranges add a line per card on phones and push the legend past the 812 px fold; the gutter numbers place each region on the dump instead. The ranges show at 1000 px and up |
+| Tufte: "trim the caption" | ADAPT (M5): the dump caption is now only "Hello.class · 417 bytes" |
+| Tufte: "region 4 is more than a header" | ADAPT (M6): "…with no interfaces and no fields" |
+| Krug: "cards read as captions" | ADAPT (M5): every card ends with its destination and an arrow ("Inside the JVM →", "Lesson 07 →"), on phones too |
+| Krug + Holmes: "no start on the phone's first screen / nothing explains the dump" | ADAPT (M5): a "Start lesson 01 →" button sits beside the magic number at every width, and phones get one plain line above the dump: "Below is lesson 01, compiled: the file every Java program becomes." |
+| Krug: "tiles are numbers only" | ADAPT, in part (M5): the strip header says "All 13 lessons · titles below", where the titled list follows, and every tile has an accessible name and a title. Full titles on the tiles would push the hero past the fold |
+| Krug + Holmes: "`lessons[n]` makes you decode / zero-indexed pager" | ADAPT (M6): plain words first ("lesson 9 of 13", "lesson 2"), with the index after them in small grey type |
+| Debord + Cairo: "minimum versions below 8 never checked" | ADAPT (M6): the pages now say the build proves minimums for Java 8 and later, and that 1.0 and 5.0 come from the language's history (JDK 21 cannot compile for them) |
+| Debord + Cairo: "417 bytes of bytecode / the same on every machine" | ADAPT (M6): "a 417-byte class file. It runs unchanged on any JVM of version 21 or later" |
+| Debord: "which is why … Android … banks" | ADAPT (M6): the home paragraph now claims only what bytecode does; Android, banks and Minecraft are gone |
+| Debord + Cairo: "LTS every two years" | ADAPT (M6): "11 in 2018, 17 in 2021, and since then one every two years" |
+| Cairo: "Versions omits 14, 15 and 16" | ADAPT (M6): rows added for 14 (switch expressions), 15 (text blocks) and 16 (records); lessons 03, 04 and 12 now appear |
+| Debord + Cairo: "Streams badge unexplained" | ADAPT (M6): the note and the code name the record that needs Java 16 |
+| Debord: "official links" | ADAPT (M6): "links to their documentation" |
+| Debord: "SourceFile is optional" | ADAPT (M6): "usually names", and the JVM page says a compiler can leave it out |
+| Debord: "a fraction of a second, not measured" | ADAPT (M6): replaced by a computed fact: one after another, 10,000 × 10 ms is 100 seconds |
+| Mace: "Tab order jumps at 390" | ADAPT (M5): the hero's source order is now its phone reading order, laid out with grid areas instead of `order` |
+| Mace: "current page invisible in forced colours" | ADAPT (M5): a 3 px border instead of a box-shadow |
+| Mace: "magic tiles 4.23:1" | ADAPT (M5): the magic text uses the darker region mark (`--m1`) |
+| Holmes: "parts not named on target pages" | ADAPT (M6): lesson 01 names the constant pool; Ecosystem names the attributes; the JVM page has a section for each part |
+| Holmes: "unglossed terms" | ADAPT (M6): class, method, type, primitive, reference, 32-bit, floating point and bytecode are glossed at first use; "Unlike C" and "compile time" rewritten |
+| Holmes: "no `cd`, no Windows" | ADAPT (M6): `cd Downloads` and `winget install EclipseAdoptium.Temurin.21.JDK` |
+| Shklovsky: "magic headline-sized" | ADAPT (M7): on desktop the magic spans the hero at clamp(60px, 7.2vw, 120px), the largest element; on phones it is 38px, beside the start button and above the 22px title |
+| Shklovsky: "the device stops at the home page" | ADAPT (M7): every lesson opens with a ribbon of its own compiled class file, six tinted runs sized by bytes, captioned with the counts (Records.class: 2,076 bytes, pool 1,453) |
+| Shklovsky: "jvm.html shows no bytes" | ADAPT (M7): the JVM page carries the full tinted dump and legend, and a numbered section for each part with its byte range |
+| Gautier: "code cut mid-word" | ADAPT (M6): every program rewritten to at most 74 columns, with comments on their own lines (the desktop box fits about 83) |
+| Gautier: "01 , 05" | ADAPT (M6): the lesson links on Versions are plain inline links |
+
+## Move M5: The hero, reordered and annotated (KEEP-THE-RULE)
+Depends on: M3. Anchors: Rule Thinking with Type (Ellen Lupton) | Floor WCAG 2.2 Contrast and Perceivability (W3C). Source order equals reading order. Badges sit in a gutter. Cards name their destination. A start button on every screen.
+
+## Move M6: Claims narrowed and terms glossed (KEEP-THE-RULE)
+Depends on: M1. Every sentence that states a fact about the build, the bytes or Java's history is either computed or backed by a source.
+
+## Move M7: The class file goes inward (BREAK, an escalation of M3)
+Depends on: M3. Anchors: Breaker The Medium Is the Massage (Marshall McLuhan, Quentin Fiore) | Counterpoint The End of Print (David Carson, Lewis Blackwell).
+Intent: every lesson shows the file its program becomes; the JVM page reads Hello.class part by part; the magic number becomes the largest thing on the home page.
+Alternatives rejected: a full dump on every lesson (2,000+ bytes is noise); no device inside (Shklovsky R1).
+Mode field: Advanced pole: the medium on every page. Acceptable pole: one thin strip with its counts in words, and a link that explains it.

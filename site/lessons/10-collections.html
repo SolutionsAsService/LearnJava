@@ -22,40 +22,47 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[9]</code> · lesson 10 of 13 · Java 9+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 10 of 13 <span class="idx">lessons[9]</span> · Java 9+</p>
   <h1>Collections and generics</h1>
   <p class="lede">List, Map and Set, and one method that works for any comparable type.</p>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:1924"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:445"></span><span class="seg r6" style="flex-grow:46"></span></div><figcaption><code>CollectionsDemo.class</code> is 2433 bytes: magic 4, version 4, constant pool 1924, header 10, methods 445, attributes 46. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
-  <figcaption><span class="fname">CollectionsDemo.java</span><span class="fmeta">19 lines</span></figcaption>
+  <figcaption><span class="fname">CollectionsDemo.java</span><span class="fmeta">24 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">import</span> java.util.*;
 
 <span class="tk">public</span> <span class="tk">class</span> <span class="tt">CollectionsDemo</span> {
-    <span class="tk">static</span> &lt;<span class="tt">T</span> <span class="tk">extends</span> <span class="tt">Comparable</span>&lt;<span class="tt">T</span>&gt;&gt; <span class="tt">T</span> largest(<span class="tt">List</span>&lt;<span class="tt">T</span>&gt; items) {   <span class="tc">// one method, any comparable type</span>
+    <span class="tc">// one method for any type that can be compared</span>
+    <span class="tk">static</span> &lt;<span class="tt">T</span> <span class="tk">extends</span> <span class="tt">Comparable</span>&lt;<span class="tt">T</span>&gt;&gt; <span class="tt">T</span> largest(<span class="tt">List</span>&lt;<span class="tt">T</span>&gt; items) {
         <span class="tt">T</span> best = items.get(<span class="tn">0</span>);
         <span class="tk">for</span> (<span class="tt">T</span> t : items) <span class="tk">if</span> (t.compareTo(best) &gt; <span class="tn">0</span>) best = t;
         <span class="tk">return</span> best;
     }
 
     <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
-        <span class="tt">List</span>&lt;<span class="tt">String</span>&gt; langs = <span class="tk">new</span> <span class="tt">ArrayList</span>&lt;&gt;(<span class="tt">List</span>.of(<span class="ts">&quot;Java&quot;</span>, <span class="ts">&quot;Kotlin&quot;</span>, <span class="ts">&quot;Scala&quot;</span>, <span class="ts">&quot;Groovy&quot;</span>));
+        <span class="tt">List</span>&lt;<span class="tt">String</span>&gt; langs = <span class="tk">new</span> <span class="tt">ArrayList</span>&lt;&gt;(
+                <span class="tt">List</span>.of(<span class="ts">&quot;Java&quot;</span>, <span class="ts">&quot;Kotlin&quot;</span>, <span class="ts">&quot;Scala&quot;</span>, <span class="ts">&quot;Groovy&quot;</span>));
         langs.add(<span class="ts">&quot;Clojure&quot;</span>);
         <span class="tt">System</span>.out.println(langs);
 
-        <span class="tt">Map</span>&lt;<span class="tt">String</span>, <span class="tt">Integer</span>&gt; born = <span class="tk">new</span> <span class="tt">TreeMap</span>&lt;&gt;();               <span class="tc">// sorted by key</span>
-        born.put(<span class="ts">&quot;Java&quot;</span>, <span class="tn">1996</span>); born.put(<span class="ts">&quot;Scala&quot;</span>, <span class="tn">2004</span>); born.put(<span class="ts">&quot;Kotlin&quot;</span>, <span class="tn">2016</span>);
+        <span class="tt">Map</span>&lt;<span class="tt">String</span>, <span class="tt">Integer</span>&gt; born = <span class="tk">new</span> <span class="tt">TreeMap</span>&lt;&gt;();  <span class="tc">// sorted by key</span>
+        born.put(<span class="ts">&quot;Java&quot;</span>, <span class="tn">1996</span>);
+        born.put(<span class="ts">&quot;Scala&quot;</span>, <span class="tn">2004</span>);
+        born.put(<span class="ts">&quot;Kotlin&quot;</span>, <span class="tn">2016</span>);
         <span class="tt">System</span>.out.println(born);
 
         <span class="tt">Set</span>&lt;<span class="tt">String</span>&gt; unique = <span class="tk">new</span> <span class="tt">HashSet</span>&lt;&gt;(<span class="tt">List</span>.of(<span class="ts">&quot;a&quot;</span>, <span class="ts">&quot;b&quot;</span>, <span class="ts">&quot;a&quot;</span>));
         <span class="tt">System</span>.out.println(<span class="ts">&quot;unique: &quot;</span> + unique.size());
 
-        <span class="tt">System</span>.out.println(<span class="ts">&quot;largest: &quot;</span> + largest(langs) + <span class="ts">&quot;, &quot;</span> + largest(<span class="tt">List</span>.of(<span class="tn">3</span>, <span class="tn">9</span>, <span class="tn">4</span>)));
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;largest: &quot;</span> + largest(langs));
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;largest: &quot;</span> + largest(<span class="tt">List</span>.of(<span class="tn">3</span>, <span class="tn">9</span>, <span class="tn">4</span>)));
     }
 }
 </code></pre>
   <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>[Java, Kotlin, Scala, Groovy, Clojure]
 {Java=1996, Kotlin=2016, Scala=2004}
 unique: 2
-largest: Scala, 9</samp></pre></div>
+largest: Scala
+largest: 9</samp></pre></div>
   <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all CollectionsDemo.java &amp;&amp; java CollectionsDemo</code></pre>
   <p class="setup"><a download href="../examples/CollectionsDemo.java">Download CollectionsDemo.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
 </figure>
@@ -66,8 +73,8 @@ largest: Scala, 9</samp></pre></div>
      <p><code>largest</code> is generic too. It works for any <code>T</code> that can be
      compared, so the same code finds the last word alphabetically and the biggest number.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="09-records.html"><span>← lessons[8]</span>Records, sealed types and patterns</a>
-    <a class="next" href="11-exceptions.html"><span>lessons[10] →</span>Exceptions</a>
+    <a class="prev" href="09-records.html"><span>← lesson 9 · <span class='idx'>lessons[8]</span></span>Records, sealed types and patterns</a>
+    <a class="next" href="11-exceptions.html"><span>lesson 11 · <span class='idx'>lessons[10]</span> →</span>Exceptions</a>
   </nav>
 </article>
 </main>

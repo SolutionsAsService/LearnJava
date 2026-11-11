@@ -1,9 +1,12 @@
 public class Methods {
     static int add(int a, int b) { return a + b; }
-    static double add(double a, double b) { return a + b; }   // overload: same name, other types
 
+    // an overload: the same name, other parameter types
+    static double add(double a, double b) { return a + b; }
+
+    // a method that calls itself
     static long factorial(int n) {
-        return n <= 1 ? 1 : n * factorial(n - 1);              // calls itself
+        return n <= 1 ? 1 : n * factorial(n - 1);
     }
 
     public static void main(String[] args) {

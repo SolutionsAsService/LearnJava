@@ -22,9 +22,10 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[0]</code> · lesson 1 of 13 · Java 1.0+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 1 of 13 <span class="idx">lessons[0]</span> · Java 1.0+</p>
   <h1>Hello, World</h1>
   <p class="lede">A class, a main method, one line printed.</p>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:293"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:96"></span><span class="seg r6" style="flex-grow:10"></span></div><figcaption><code>Hello.class</code> is 417 bytes: magic 4, version 4, constant pool 293, header 10, methods 96, attributes 10. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
   <figcaption><span class="fname">Hello.java</span><span class="fmeta">7 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tc">// Every Java program starts in a class. This one is named Hello,</span>
@@ -39,18 +40,21 @@
   <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Hello.java &amp;&amp; java Hello</code></pre>
   <p class="setup"><a download href="../examples/Hello.java">Download Hello.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
 </figure>
-  <div class="notes"><p>Java code lives in <em>classes</em>. A class named <code>Hello</code> goes in a file
+  <div class="notes"><p>Java code lives in <em>classes</em>: a class is a named bundle of data and the
+     methods (named blocks of code) that work on it. A class named <code>Hello</code> goes in a file
      named <code>Hello.java</code>. The program starts at <code>main</code>:
      <code>public</code> (anyone may call it), <code>static</code> (no object is needed to
      call it), and <code>void</code> (it returns nothing). <code>String[] args</code> holds
      any words typed after the program’s name.</p>
+     <p>The text “Hello, World!” is stored inside the compiled file, in a part called the
+     <em>constant pool</em>: the table of every name and piece of text a class uses.</p>
      <p><code>javac</code> compiles the file into <code>Hello.class</code>, and <code>java</code>
      runs it on the Java Virtual Machine (the JVM). The <a href="../index.html">home page</a> is
      that very <code>.class</code> file, byte for byte; <a href="../jvm.html">Inside the JVM</a>
      walks through it.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="index.html"><span>← lessons</span>All lessons</a>
-    <a class="next" href="02-variables.html"><span>lessons[1] →</span>Variables and types</a>
+    <a class="prev" href="index.html"><span>← the course</span>All lessons</a>
+    <a class="next" href="02-variables.html"><span>lesson 2 · <span class='idx'>lessons[1]</span> →</span>Variables and types</a>
   </nav>
 </article>
 </main>

@@ -22,26 +22,30 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[11]</code> · lesson 12 of 13 · Java 16+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 12 of 13 <span class="idx">lessons[11]</span> · Java 16+</p>
   <h1>Lambdas and streams</h1>
   <p class="lede">Filter, map, sort and join a list in one expression.</p>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:2327"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:342"></span><span class="seg r6" style="flex-grow:88"></span></div><figcaption><code>Streams.class</code> is 2775 bytes: magic 4, version 4, constant pool 2327, header 10, methods 342, attributes 88. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
-  <figcaption><span class="fname">Streams.java</span><span class="fmeta">17 lines</span></figcaption>
+  <figcaption><span class="fname">Streams.java</span><span class="fmeta">20 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">import</span> java.util.<span class="tt">List</span>;
 <span class="tk">import</span> java.util.stream.<span class="tt">Collectors</span>;
 
 <span class="tk">public</span> <span class="tk">class</span> <span class="tt">Streams</span> {
+    <span class="tc">// a record (Java 16): a one-line class for plain data</span>
     <span class="tk">record</span> <span class="tt">Lang</span>(<span class="tt">String</span> name, <span class="tk">int</span> year) {}
 
     <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
-        <span class="tt">List</span>&lt;<span class="tt">Lang</span>&gt; jvm = <span class="tt">List</span>.of(<span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Java&quot;</span>, <span class="tn">1996</span>), <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Groovy&quot;</span>, <span class="tn">2003</span>),
-                                 <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Scala&quot;</span>, <span class="tn">2004</span>), <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Clojure&quot;</span>, <span class="tn">2007</span>), <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Kotlin&quot;</span>, <span class="tn">2016</span>));
+        <span class="tt">List</span>&lt;<span class="tt">Lang</span>&gt; jvm = <span class="tt">List</span>.of(
+                <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Java&quot;</span>, <span class="tn">1996</span>), <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Groovy&quot;</span>, <span class="tn">2003</span>),
+                <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Scala&quot;</span>, <span class="tn">2004</span>), <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Clojure&quot;</span>, <span class="tn">2007</span>),
+                <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Kotlin&quot;</span>, <span class="tn">2016</span>));
 
         <span class="tt">String</span> after2000 = jvm.stream()
-            .filter(l -&gt; l.year() &gt; <span class="tn">2000</span>)               <span class="tc">// a lambda: a function written in place</span>
-            .map(<span class="tt">Lang</span>::name)                            <span class="tc">// a method reference</span>
-            .sorted()
-            .collect(<span class="tt">Collectors</span>.joining(<span class="ts">&quot;, &quot;</span>));
+                .filter(l -&gt; l.year() &gt; <span class="tn">2000</span>)  <span class="tc">// a lambda</span>
+                .map(<span class="tt">Lang</span>::name)               <span class="tc">// a method reference</span>
+                .sorted()
+                .collect(<span class="tt">Collectors</span>.joining(<span class="ts">&quot;, &quot;</span>));
         <span class="tt">System</span>.out.println(after2000);
 
         <span class="tk">int</span> total = jvm.stream().mapToInt(<span class="tt">Lang</span>::year).sum();
@@ -57,10 +61,12 @@ average year: 2005</samp></pre></div>
   <div class="notes"><p>A <em>lambda</em>, <code class="w">l -&gt; l.year() &gt; 2000</code>, is a function written in
      place. A <em>method reference</em>, <code>Lang::name</code>, names an existing method
      instead. A <em>stream</em> passes each element through the steps in order; nothing
-     happens until <code>collect</code> asks for the result. All of this arrived in Java 8.</p></div>
+     happens until <code>collect</code> asks for the result. Lambdas and streams arrived in
+     Java 8; this program also declares a <code>record</code>, which is why it needs Java
+     16.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="11-exceptions.html"><span>← lessons[10]</span>Exceptions</a>
-    <a class="next" href="13-threads.html"><span>lessons[12] →</span>Virtual threads</a>
+    <a class="prev" href="11-exceptions.html"><span>← lesson 11 · <span class='idx'>lessons[10]</span></span>Exceptions</a>
+    <a class="next" href="13-threads.html"><span>lesson 13 · <span class='idx'>lessons[12]</span> →</span>Virtual threads</a>
   </nav>
 </article>
 </main>

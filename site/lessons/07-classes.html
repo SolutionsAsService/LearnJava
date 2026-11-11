@@ -22,25 +22,31 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[6]</code> · lesson 7 of 13 · Java 5.0+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 7 of 13 <span class="idx">lessons[6]</span> · Java 5.0+</p>
   <h1>Classes and objects</h1>
   <p class="lede">Fields, a constructor, private state and toString.</p>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:426"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:131"></span><span class="seg r6" style="flex-grow:36"></span></div><figcaption><code>Classes.class</code> is 611 bytes: magic 4, version 4, constant pool 426, header 10, methods 131, attributes 36. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
-  <figcaption><span class="fname">Classes.java</span><span class="fmeta">19 lines</span></figcaption>
+  <figcaption><span class="fname">Classes.java</span><span class="fmeta">24 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Classes</span> {
     <span class="tk">static</span> <span class="tk">class</span> <span class="tt">Account</span> {
-        <span class="tk">private</span> <span class="tk">final</span> <span class="tt">String</span> owner;   <span class="tc">// set once, in the constructor</span>
-        <span class="tk">private</span> <span class="tk">long</span> cents;            <span class="tc">// private: only Account can change it</span>
+        <span class="tk">private</span> <span class="tk">final</span> <span class="tt">String</span> owner;  <span class="tc">// set once</span>
+        <span class="tk">private</span> <span class="tk">long</span> cents;          <span class="tc">// only Account can change it</span>
 
         <span class="tt">Account</span>(<span class="tt">String</span> owner) { <span class="tk">this</span>.owner = owner; }
 
         <span class="tk">void</span> deposit(<span class="tk">long</span> amount) {
-            <span class="tk">if</span> (amount &lt;= <span class="tn">0</span>) <span class="tk">throw</span> <span class="tk">new</span> <span class="tt">IllegalArgumentException</span>(<span class="ts">&quot;amount must be positive&quot;</span>);
+            <span class="tk">if</span> (amount &lt;= <span class="tn">0</span>) {
+                <span class="tk">throw</span> <span class="tk">new</span> <span class="tt">IllegalArgumentException</span>(<span class="ts">&quot;must be positive&quot;</span>);
+            }
             cents += amount;
         }
 
         <span class="tp">@Override</span>
-        <span class="tk">public</span> <span class="tt">String</span> toString() { <span class="tk">return</span> owner + <span class="ts">&quot;: &quot;</span> + cents / <span class="tn">100</span> + <span class="ts">&quot;.&quot;</span> + <span class="tt">String</span>.format(<span class="ts">&quot;%02d&quot;</span>, cents % <span class="tn">100</span>); }
+        <span class="tk">public</span> <span class="tt">String</span> toString() {
+            <span class="tk">return</span> owner + <span class="ts">&quot;: &quot;</span> + cents / <span class="tn">100</span> + <span class="ts">&quot;.&quot;</span>
+                    + <span class="tt">String</span>.format(<span class="ts">&quot;%02d&quot;</span>, cents % <span class="tn">100</span>);
+        }
     }
 
     <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
@@ -64,8 +70,8 @@
      really replaces the method every object inherits from <code>Object</code>; that is the
      method <code>println</code> calls.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="06-arrays.html"><span>← lessons[5]</span>Arrays</a>
-    <a class="next" href="08-interfaces.html"><span>lessons[7] →</span>Interfaces and polymorphism</a>
+    <a class="prev" href="06-arrays.html"><span>← lesson 6 · <span class='idx'>lessons[5]</span></span>Arrays</a>
+    <a class="next" href="08-interfaces.html"><span>lesson 8 · <span class='idx'>lessons[7]</span> →</span>Interfaces and polymorphism</a>
   </nav>
 </article>
 </main>

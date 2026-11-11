@@ -22,17 +22,21 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[4]</code> · lesson 5 of 13 · Java 1.0+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 5 of 13 <span class="idx">lessons[4]</span> · Java 1.0+</p>
   <h1>Methods</h1>
   <p class="lede">Static methods, overloading by type, and recursion.</p>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:823"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:290"></span><span class="seg r6" style="flex-grow:40"></span></div><figcaption><code>Methods.class</code> is 1171 bytes: magic 4, version 4, constant pool 823, header 10, methods 290, attributes 40. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
-  <figcaption><span class="fname">Methods.java</span><span class="fmeta">12 lines</span></figcaption>
+  <figcaption><span class="fname">Methods.java</span><span class="fmeta">14 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Methods</span> {
     <span class="tk">static</span> <span class="tk">int</span> add(<span class="tk">int</span> a, <span class="tk">int</span> b) { <span class="tk">return</span> a + b; }
-    <span class="tk">static</span> <span class="tk">double</span> add(<span class="tk">double</span> a, <span class="tk">double</span> b) { <span class="tk">return</span> a + b; }   <span class="tc">// overload: same name, other types</span>
 
+    <span class="tc">// an overload: the same name, other parameter types</span>
+    <span class="tk">static</span> <span class="tk">double</span> add(<span class="tk">double</span> a, <span class="tk">double</span> b) { <span class="tk">return</span> a + b; }
+
+    <span class="tc">// a method that calls itself</span>
     <span class="tk">static</span> <span class="tk">long</span> factorial(<span class="tk">int</span> n) {
-        <span class="tk">return</span> n &lt;= <span class="tn">1</span> ? <span class="tn">1</span> : n * factorial(n - <span class="tn">1</span>);              <span class="tc">// calls itself</span>
+        <span class="tk">return</span> n &lt;= <span class="tn">1</span> ? <span class="tn">1</span> : n * factorial(n - <span class="tn">1</span>);
     }
 
     <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
@@ -53,8 +57,8 @@
      (<em>overloading</em>); the compiler picks one from the arguments. <code>factorial</code>
      uses <code>long</code> because 20! is larger than the biggest <code>int</code>.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="04-control-flow.html"><span>← lessons[3]</span>Control flow</a>
-    <a class="next" href="06-arrays.html"><span>lessons[5] →</span>Arrays</a>
+    <a class="prev" href="04-control-flow.html"><span>← lesson 4 · <span class='idx'>lessons[3]</span></span>Control flow</a>
+    <a class="next" href="06-arrays.html"><span>lesson 6 · <span class='idx'>lessons[5]</span> →</span>Arrays</a>
   </nav>
 </article>
 </main>

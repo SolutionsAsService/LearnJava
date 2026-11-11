@@ -26,7 +26,7 @@ const shots = new Set(['index.html', 'lessons/index.html', 'lessons/01-hello.htm
           const fs = parseFloat(cs.fontSize); if (fs < minFont) { minFont = fs; minEl = el.tagName + '.' + el.className + ' "' + el.textContent.trim().slice(0, 24) + '"'; }
         }
         const small = [...document.querySelectorAll('a, button, summary')].filter(a => { const r = a.getBoundingClientRect(); if (!r.width) return false;
-          const inline = getComputedStyle(a).display === 'inline' && a.closest('p, li') && !a.closest('nav, .legend, .strip, .chips, .lessons, .pager'); return !inline && (r.height < 44 || r.width < 24); }).map(a => a.textContent.trim().slice(0, 20));
+          const inline = getComputedStyle(a).display === 'inline' && a.closest('p, li, figcaption') && !a.closest('nav, .legend, .strip, .chips, .lessons, .pager'); return !inline && (r.height < 44 || r.width < 24); }).map(a => a.textContent.trim().slice(0, 20));
         const hero = document.querySelector('.hero'); let heroBottom = null, parts = {};
         if (hero) { for (const s of ['.magic', 'h1', '.dump', '.legend', '.strip']) { const e = document.querySelector(s); if (e) parts[s] = Math.round(e.getBoundingClientRect().bottom); } heroBottom = Math.max(...Object.values(parts)); }
         return { scrollW: document.documentElement.scrollWidth, minFont, minEl, small: small.slice(0, 5), nSmall: small.length, heroBottom, parts };

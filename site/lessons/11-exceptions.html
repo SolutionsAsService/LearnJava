@@ -22,11 +22,12 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[10]</code> · lesson 11 of 13 · Java 11+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 11 of 13 <span class="idx">lessons[10]</span> · Java 11+</p>
   <h1>Exceptions</h1>
   <p class="lede">try, catch and finally; checked and unchecked; try-with-resources.</p>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:1680"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:469"></span><span class="seg r6" style="flex-grow:52"></span></div><figcaption><code>Exceptions.class</code> is 2219 bytes: magic 4, version 4, constant pool 1680, header 10, methods 469, attributes 52. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
-  <figcaption><span class="fname">Exceptions.java</span><span class="fmeta">23 lines</span></figcaption>
+  <figcaption><span class="fname">Exceptions.java</span><span class="fmeta">25 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">import</span> java.io.*;
 <span class="tk">import</span> java.nio.file.*;
 
@@ -34,20 +35,22 @@
     <span class="tk">static</span> <span class="tk">int</span> parse(<span class="tt">String</span> s) {
         <span class="tk">try</span> {
             <span class="tk">return</span> <span class="tt">Integer</span>.parseInt(s);
-        } <span class="tk">catch</span> (<span class="tt">NumberFormatException</span> e) {          <span class="tc">// unchecked: the compiler does not insist</span>
+        } <span class="tk">catch</span> (<span class="tt">NumberFormatException</span> e) {  <span class="tc">// unchecked</span>
             <span class="tt">System</span>.out.println(<span class="ts">&quot;not a number: &quot;</span> + s);
             <span class="tk">return</span> <span class="tn">0</span>;
         } <span class="tk">finally</span> {
-            <span class="tt">System</span>.out.println(<span class="ts">&quot;parsed &quot;</span> + s);       <span class="tc">// runs either way</span>
+            <span class="tt">System</span>.out.println(<span class="ts">&quot;parsed &quot;</span> + s);  <span class="tc">// runs either way</span>
         }
     }
 
-    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) <span class="tk">throws</span> <span class="tt">IOException</span> {   <span class="tc">// checked: must be declared or caught</span>
+    <span class="tc">// IOException is checked: it must be declared or caught</span>
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) <span class="tk">throws</span> <span class="tt">IOException</span> {
         <span class="tt">System</span>.out.println(parse(<span class="ts">&quot;42&quot;</span>) + parse(<span class="ts">&quot;x&quot;</span>));
 
         <span class="tt">Path</span> file = <span class="tt">Files</span>.createTempFile(<span class="ts">&quot;learnjava&quot;</span>, <span class="ts">&quot;.txt&quot;</span>);
         <span class="tt">Files</span>.writeString(file, <span class="ts">&quot;one\ntwo\n&quot;</span>);
-        <span class="tk">try</span> (<span class="tt">BufferedReader</span> in = <span class="tt">Files</span>.newBufferedReader(file)) {   <span class="tc">// closed automatically</span>
+        <span class="tc">// try (...) closes the reader automatically</span>
+        <span class="tk">try</span> (<span class="tt">BufferedReader</span> in = <span class="tt">Files</span>.newBufferedReader(file)) {
             <span class="tt">System</span>.out.println(<span class="ts">&quot;first line: &quot;</span> + in.readLine());
         }
         <span class="tt">Files</span>.delete(file);
@@ -70,8 +73,8 @@ first line: one</samp></pre></div>
      <em>unchecked</em> one such as <code>NumberFormatException</code> need not be.
      <code>try (…)</code> closes the reader automatically, even after an error.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="10-collections.html"><span>← lessons[9]</span>Collections and generics</a>
-    <a class="next" href="12-streams.html"><span>lessons[11] →</span>Lambdas and streams</a>
+    <a class="prev" href="10-collections.html"><span>← lesson 10 · <span class='idx'>lessons[9]</span></span>Collections and generics</a>
+    <a class="next" href="12-streams.html"><span>lesson 12 · <span class='idx'>lessons[11]</span> →</span>Lambdas and streams</a>
   </nav>
 </article>
 </main>

@@ -22,19 +22,22 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[2]</code> · lesson 3 of 13 · Java 15+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 3 of 13 <span class="idx">lessons[2]</span> · Java 15+</p>
   <h1>Strings</h1>
   <p class="lede">== compares objects, equals compares text, and strings never change.</p>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:1169"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:319"></span><span class="seg r6" style="flex-grow:52"></span></div><figcaption><code>Strings.class</code> is 1558 bytes: magic 4, version 4, constant pool 1169, header 10, methods 319, attributes 52. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
-  <figcaption><span class="fname">Strings.java</span><span class="fmeta">17 lines</span></figcaption>
+  <figcaption><span class="fname">Strings.java</span><span class="fmeta">19 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Strings</span> {
     <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
         <span class="tt">String</span> a = <span class="ts">&quot;java&quot;</span>;
         <span class="tt">String</span> b = <span class="tk">new</span> <span class="tt">String</span>(<span class="ts">&quot;java&quot;</span>);
-        <span class="tt">System</span>.out.println(<span class="ts">&quot;a == b: &quot;</span> + (a == b));            <span class="tc">// same object? no</span>
-        <span class="tt">System</span>.out.println(<span class="ts">&quot;a.equals(b): &quot;</span> + a.equals(b));    <span class="tc">// same text? yes</span>
+        <span class="tc">// == asks: the same object? equals asks: the same text?</span>
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;a == b: &quot;</span> + (a == b));
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;a.equals(b): &quot;</span> + a.equals(b));
 
-        <span class="tt">String</span> upper = a.toUpperCase();                      <span class="tc">// a new string; a is unchanged</span>
+        <span class="tc">// strings never change; toUpperCase makes a new one</span>
+        <span class="tt">String</span> upper = a.toUpperCase();
         <span class="tt">System</span>.out.println(a + <span class="ts">&quot; -&gt; &quot;</span> + upper);
 
         <span class="tt">StringBuilder</span> sb = <span class="tk">new</span> <span class="tt">StringBuilder</span>();
@@ -64,8 +67,8 @@ its line breaks.</samp></pre></div>
      string and leaves the old one alone. To build text piece by piece, use a
      <code>StringBuilder</code>. Text blocks (three double quotes, <code>&quot;&quot;&quot;</code>, Java 15) keep line breaks.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="02-variables.html"><span>← lessons[1]</span>Variables and types</a>
-    <a class="next" href="04-control-flow.html"><span>lessons[3] →</span>Control flow</a>
+    <a class="prev" href="02-variables.html"><span>← lesson 2 · <span class='idx'>lessons[1]</span></span>Variables and types</a>
+    <a class="next" href="04-control-flow.html"><span>lesson 4 · <span class='idx'>lessons[3]</span> →</span>Control flow</a>
   </nav>
 </article>
 </main>

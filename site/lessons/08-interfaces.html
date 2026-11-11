@@ -22,15 +22,17 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[7]</code> · lesson 8 of 13 · Java 9+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 8 of 13 <span class="idx">lessons[7]</span> · Java 9+</p>
   <h1>Interfaces and polymorphism</h1>
   <p class="lede">A contract, two classes that keep it, one loop over both.</p>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:937"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:216"></span><span class="seg r6" style="flex-grow:56"></span></div><figcaption><code>Interfaces.class</code> is 1227 bytes: magic 4, version 4, constant pool 937, header 10, methods 216, attributes 56. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
-  <figcaption><span class="fname">Interfaces.java</span><span class="fmeta">20 lines</span></figcaption>
+  <figcaption><span class="fname">Interfaces.java</span><span class="fmeta">23 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">import</span> java.util.<span class="tt">List</span>;
 
 <span class="tk">public</span> <span class="tk">class</span> <span class="tt">Interfaces</span> {
-    <span class="tk">interface</span> <span class="tt">Shape</span> { <span class="tk">double</span> area(); }                  <span class="tc">// a contract, no body</span>
+    <span class="tc">// a contract: methods without bodies</span>
+    <span class="tk">interface</span> <span class="tt">Shape</span> { <span class="tk">double</span> area(); }
 
     <span class="tk">static</span> <span class="tk">class</span> <span class="tt">Square</span> <span class="tk">implements</span> <span class="tt">Shape</span> {
         <span class="tk">final</span> <span class="tk">double</span> side;
@@ -47,7 +49,9 @@
     <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
         <span class="tt">List</span>&lt;<span class="tt">Shape</span>&gt; shapes = <span class="tt">List</span>.of(<span class="tk">new</span> <span class="tt">Square</span>(<span class="tn">2</span>), <span class="tk">new</span> <span class="tt">Circle</span>(<span class="tn">1</span>));
         <span class="tk">for</span> (<span class="tt">Shape</span> s : shapes) {
-            <span class="tt">System</span>.out.printf(<span class="ts">&quot;%s %.2f%n&quot;</span>, s.getClass().getSimpleName(), s.area());  <span class="tc">// decided at run time</span>
+            <span class="tc">// which area() runs is decided at run time</span>
+            <span class="tt">String</span> name = s.getClass().getSimpleName();
+            <span class="tt">System</span>.out.printf(<span class="ts">&quot;%s %.2f%n&quot;</span>, name, s.area());
         }
     }
 }
@@ -62,8 +66,8 @@ Circle 3.14</samp></pre></div>
      and calls <code>area()</code>; which body runs is decided at run time by the actual object.
      That is <em>polymorphism</em>.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="07-classes.html"><span>← lessons[6]</span>Classes and objects</a>
-    <a class="next" href="09-records.html"><span>lessons[8] →</span>Records, sealed types and patterns</a>
+    <a class="prev" href="07-classes.html"><span>← lesson 7 · <span class='idx'>lessons[6]</span></span>Classes and objects</a>
+    <a class="next" href="09-records.html"><span>lesson 9 · <span class='idx'>lessons[8]</span> →</span>Records, sealed types and patterns</a>
   </nav>
 </article>
 </main>

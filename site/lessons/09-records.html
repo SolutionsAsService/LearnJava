@@ -22,29 +22,35 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[8]</code> · lesson 9 of 13 · Java 21+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 9 of 13 <span class="idx">lessons[8]</span> · Java 21+</p>
   <h1>Records, sealed types and patterns</h1>
   <p class="lede">Modern Java: data classes in one line, closed hierarchies, and switch on shape.</p>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:1453"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:513"></span><span class="seg r6" style="flex-grow:92"></span></div><figcaption><code>Records.class</code> is 2076 bytes: magic 4, version 4, constant pool 1453, header 10, methods 513, attributes 92. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
-  <figcaption><span class="fname">Records.java</span><span class="fmeta">18 lines</span></figcaption>
+  <figcaption><span class="fname">Records.java</span><span class="fmeta">23 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Records</span> {
-    <span class="tk">sealed</span> <span class="tk">interface</span> <span class="tt">Shape</span> <span class="tk">permits</span> <span class="tt">Circle</span>, <span class="tt">Square</span>, <span class="tt">Rect</span> {}   <span class="tc">// the only three shapes there will ever be</span>
+    <span class="tc">// sealed: these three are the only shapes there will ever be</span>
+    <span class="tk">sealed</span> <span class="tk">interface</span> <span class="tt">Shape</span> <span class="tk">permits</span> <span class="tt">Circle</span>, <span class="tt">Square</span>, <span class="tt">Rect</span> {}
     <span class="tk">record</span> <span class="tt">Circle</span>(<span class="tk">double</span> r) <span class="tk">implements</span> <span class="tt">Shape</span> {}
     <span class="tk">record</span> <span class="tt">Square</span>(<span class="tk">double</span> side) <span class="tk">implements</span> <span class="tt">Shape</span> {}
     <span class="tk">record</span> <span class="tt">Rect</span>(<span class="tk">double</span> w, <span class="tk">double</span> h) <span class="tk">implements</span> <span class="tt">Shape</span> {}
 
+    <span class="tc">// no default: the compiler knows every case is covered</span>
     <span class="tk">static</span> <span class="tk">double</span> area(<span class="tt">Shape</span> s) {
-        <span class="tk">return</span> <span class="tk">switch</span> (s) {                                  <span class="tc">// no default needed: the compiler knows all cases</span>
+        <span class="tk">return</span> <span class="tk">switch</span> (s) {
             <span class="tk">case</span> <span class="tt">Circle</span> c -&gt; <span class="tt">Math</span>.<span class="tt">PI</span> * c.r() * c.r();
             <span class="tk">case</span> <span class="tt">Square</span> q -&gt; q.side() * q.side();
-            <span class="tk">case</span> <span class="tt">Rect</span>(<span class="tk">double</span> w, <span class="tk">double</span> h) -&gt; w * h;          <span class="tc">// record pattern: unpack in place</span>
+            <span class="tk">case</span> <span class="tt">Rect</span>(<span class="tk">double</span> w, <span class="tk">double</span> h) -&gt; w * h;
         };
     }
 
     <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
         <span class="tt">Shape</span>[] shapes = { <span class="tk">new</span> <span class="tt">Circle</span>(<span class="tn">1</span>), <span class="tk">new</span> <span class="tt">Square</span>(<span class="tn">2</span>), <span class="tk">new</span> <span class="tt">Rect</span>(<span class="tn">2</span>, <span class="tn">3</span>) };
-        <span class="tk">for</span> (<span class="tt">Shape</span> s : shapes) <span class="tt">System</span>.out.printf(<span class="ts">&quot;%s -&gt; %.2f%n&quot;</span>, s, area(s));
-        <span class="tt">System</span>.out.println(<span class="tk">new</span> <span class="tt">Square</span>(<span class="tn">2</span>).equals(<span class="tk">new</span> <span class="tt">Square</span>(<span class="tn">2</span>)));  <span class="tc">// records compare by value</span>
+        <span class="tk">for</span> (<span class="tt">Shape</span> s : shapes) {
+            <span class="tt">System</span>.out.printf(<span class="ts">&quot;%s -&gt; %.2f%n&quot;</span>, s, area(s));
+        }
+        <span class="tc">// records compare by value</span>
+        <span class="tt">System</span>.out.println(<span class="tk">new</span> <span class="tt">Square</span>(<span class="tn">2</span>).equals(<span class="tk">new</span> <span class="tt">Square</span>(<span class="tn">2</span>)));
     }
 }
 </code></pre>
@@ -63,8 +69,8 @@ true</samp></pre></div>
      and it stops compiling. <code class="w">case Rect(double w, double h)</code> is a <em>record
      pattern</em> (Java 21): it checks the type and unpacks the fields in one step.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="08-interfaces.html"><span>← lessons[7]</span>Interfaces and polymorphism</a>
-    <a class="next" href="10-collections.html"><span>lessons[9] →</span>Collections and generics</a>
+    <a class="prev" href="08-interfaces.html"><span>← lesson 8 · <span class='idx'>lessons[7]</span></span>Interfaces and polymorphism</a>
+    <a class="next" href="10-collections.html"><span>lesson 10 · <span class='idx'>lessons[9]</span> →</span>Collections and generics</a>
   </nav>
 </article>
 </main>

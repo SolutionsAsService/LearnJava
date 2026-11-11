@@ -22,48 +22,57 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[1]</code> · lesson 2 of 13 · Java 10+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 2 of 13 <span class="idx">lessons[1]</span> · Java 10+</p>
   <h1>Variables and types</h1>
   <p class="lede">Eight primitive types, var, and what happens past the largest int.</p>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:991"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:222"></span><span class="seg r6" style="flex-grow:52"></span></div><figcaption><code>Variables.class</code> is 1283 bytes: magic 4, version 4, constant pool 991, header 10, methods 222, attributes 52. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
-  <figcaption><span class="fname">Variables.java</span><span class="fmeta">15 lines</span></figcaption>
+  <figcaption><span class="fname">Variables.java</span><span class="fmeta">19 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Variables</span> {
     <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
-        <span class="tk">int</span> age = <span class="tn">30</span>;               <span class="tc">// 32-bit whole number</span>
-        <span class="tk">long</span> stars = <span class="tn">100_000_000_000L</span>; <span class="tc">// 64-bit; underscores are just for reading</span>
-        <span class="tk">double</span> price = <span class="tn">4.50</span>;        <span class="tc">// 64-bit floating point</span>
-        <span class="tk">boolean</span> open = <span class="tk">true</span>;        <span class="tc">// true or false, nothing else</span>
-        <span class="tk">char</span> grade = <span class="ts">&#x27;A&#x27;</span>;           <span class="tc">// one UTF-16 code unit</span>
-        <span class="tk">var</span> name = <span class="ts">&quot;Ada&quot;</span>;           <span class="tc">// the compiler infers String</span>
+        <span class="tk">int</span> age = <span class="tn">30</span>;            <span class="tc">// a 32-bit whole number</span>
+        <span class="tk">double</span> price = <span class="tn">4.50</span>;     <span class="tc">// a number with a fractional part</span>
+        <span class="tk">boolean</span> open = <span class="tk">true</span>;     <span class="tc">// true or false, nothing else</span>
+        <span class="tk">char</span> grade = <span class="ts">&#x27;A&#x27;</span>;        <span class="tc">// one character</span>
+        <span class="tc">// long holds bigger whole numbers; _ only helps you read it</span>
+        <span class="tk">long</span> stars = <span class="tn">100_000_000_000L</span>;
+        <span class="tk">var</span> name = <span class="ts">&quot;Ada&quot;</span>;        <span class="tc">// the compiler works out: String</span>
 
         <span class="tt">System</span>.out.println(name + <span class="ts">&quot; is &quot;</span> + age + <span class="ts">&quot;, grade &quot;</span> + grade);
-        <span class="tt">System</span>.out.println(<span class="ts">&quot;stars: &quot;</span> + stars + <span class="ts">&quot;, open: &quot;</span> + open + <span class="ts">&quot;, price: &quot;</span> + price);
-        <span class="tt">System</span>.out.println(<span class="ts">&quot;int is &quot;</span> + <span class="tt">Integer</span>.<span class="tt">BYTES</span> + <span class="ts">&quot; bytes, long is &quot;</span> + <span class="tt">Long</span>.<span class="tt">BYTES</span> + <span class="ts">&quot; bytes&quot;</span>);
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;stars: &quot;</span> + stars + <span class="ts">&quot;, open: &quot;</span> + open);
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;price: &quot;</span> + price);
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;int is &quot;</span> + <span class="tt">Integer</span>.<span class="tt">BYTES</span> + <span class="ts">&quot; bytes, &quot;</span>
+                + <span class="ts">&quot;long is &quot;</span> + <span class="tt">Long</span>.<span class="tt">BYTES</span> + <span class="ts">&quot; bytes&quot;</span>);
         <span class="tt">System</span>.out.println(<span class="ts">&quot;largest int: &quot;</span> + <span class="tt">Integer</span>.<span class="tt">MAX_VALUE</span>);
-        <span class="tt">System</span>.out.println(<span class="ts">&quot;largest int + 1: &quot;</span> + (<span class="tt">Integer</span>.<span class="tt">MAX_VALUE</span> + <span class="tn">1</span>)); <span class="tc">// wraps around</span>
+        <span class="tc">// one past the largest int wraps around to the smallest</span>
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;largest int + 1: &quot;</span> + (<span class="tt">Integer</span>.<span class="tt">MAX_VALUE</span> + <span class="tn">1</span>));
     }
 }
 </code></pre>
   <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>Ada is 30, grade A
-stars: 100000000000, open: true, price: 4.5
+stars: 100000000000, open: true
+price: 4.5
 int is 4 bytes, long is 8 bytes
 largest int: 2147483647
 largest int + 1: -2147483648</samp></pre></div>
   <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Variables.java &amp;&amp; java Variables</code></pre>
   <p class="setup"><a download href="../examples/Variables.java">Download Variables.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
 </figure>
-  <div class="notes"><p>Java has eight <em>primitive</em> types, which hold a value directly:
+  <div class="notes"><p>A <em>type</em> says what kind of value a variable holds. Java has eight
+     <em>primitive</em> types, which hold a plain value directly:
      <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>,
      <code>float</code>, <code>double</code>, <code>char</code> and <code>boolean</code>.
-     Unlike C, their sizes are the same on every machine: an <code>int</code> is always 4 bytes.
-     Everything else, a <code>String</code> included, is an <em>object</em>, reached through a
-     reference.</p>
+     Their sizes are the same on every machine: an <code>int</code> is always 4 bytes (32
+     bits), where in C it depends on the computer. A floating-point type such as
+     <code>double</code> holds numbers with a fractional part. Everything else, a
+     <code>String</code> included, is an <em>object</em>: the variable holds a
+     <em>reference</em>, the address where the object lives.</p>
      <p><code>var</code> (Java 10) lets the compiler infer a local variable’s type; the type is
      still fixed. The last line shows overflow: one more than the largest <code>int</code>
      wraps around to the most negative one, silently.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="01-hello.html"><span>← lessons[0]</span>Hello, World</a>
-    <a class="next" href="03-strings.html"><span>lessons[2] →</span>Strings</a>
+    <a class="prev" href="01-hello.html"><span>← lesson 1 · <span class='idx'>lessons[0]</span></span>Hello, World</a>
+    <a class="next" href="03-strings.html"><span>lesson 3 · <span class='idx'>lessons[2]</span> →</span>Strings</a>
   </nav>
 </article>
 </main>

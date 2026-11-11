@@ -9,8 +9,9 @@ public class ControlFlow {
             System.out.println("cold");
         }
 
+        // a switch expression: each arrow gives a value
         String day = "SAT";
-        String kind = switch (day) {         // a switch expression returns a value
+        String kind = switch (day) {
             case "SAT", "SUN" -> "weekend";
             default -> "weekday";
         };
