@@ -31,11 +31,11 @@
   <p>A <em>JDK</em> (Java Development Kit) gives you <code>javac</code> to compile and <code>java</code> to run. You type both in a <em>terminal</em> (Terminal on macOS, a Linux shell, or Windows Terminal).</p>
   <ul>
     <li><strong>Any system:</strong> download a free JDK 21 or newer from <a href="https://adoptium.net/">Eclipse Temurin</a> and run its installer.</li>
-    <li><strong>macOS with Homebrew:</strong> <code>brew install openjdk@21</code>.</li>
-    <li><strong>Debian or Ubuntu:</strong> <code class="w">sudo apt install openjdk-21-jdk</code> (<code>sudo</code> asks for your password).</li>
-    <li><strong>Windows:</strong> in PowerShell, <code class="w">winget install EclipseAdoptium.Temurin.21.JDK</code>, then open a new window.</li>
+    <li><strong>macOS with Homebrew:</strong> <code class="w">brew install --cask temurin@21</code> (this installs Temurin where macOS looks for Java).</li>
+    <li><strong>Ubuntu 24.04:</strong> <code class="w">sudo apt install openjdk-21-jdk</code> (<code>sudo</code> asks for your password).</li>
+    <li><strong>Windows:</strong> in PowerShell, <code class="w">winget install EclipseAdoptium.Temurin.21.JDK</code>, then open a new window. PowerShell 5.1 does not understand <code>&amp;&amp;</code>, which is why each program’s command is given as two lines: run them one after the other.</li>
   </ul>
-  <p>Check it with <code>javac -version</code>. Then download any program from its lesson. In the terminal, move to the folder it saved to with <code>cd</code> (for example <code>cd Downloads</code>), paste the command printed under the program, and compare what it prints with the dark output box.</p>
+  <p>Check it with <code>javac -version</code>. Then download any program from its lesson. In the terminal, move to the folder it saved to with <code>cd</code> (for example <code>cd Downloads</code>), paste the two lines printed under the program, and compare what it prints with the dark output box.</p>
   <h2>Design</h2>
   <p>The home page is the real <code>Hello.class</code>, parsed byte by byte at build time. The design decisions and the critique rounds are in <code>DESIGN-LOG.md</code> in the repository. Type: Fraunces and IBM Plex Mono (SIL Open Font Licence), self-hosted.</p>
   <p>This is an unofficial guide. Java and OpenJDK are trademarks of Oracle and/or its affiliates.</p>

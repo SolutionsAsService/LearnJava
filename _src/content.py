@@ -23,7 +23,7 @@ LESSONS = [
      <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>,
      <code>float</code>, <code>double</code>, <code>char</code> and <code>boolean</code>.
      Their sizes are the same on every machine: an <code>int</code> is always 4 bytes (32
-     bits), where in C it depends on the computer. A floating-point type such as
+     bits). A floating-point type such as
      <code>double</code> holds numbers with a fractional part. Everything else, a
      <code>String</code> included, is an <em>object</em>: the variable holds a
      <em>reference</em>, the address where the object lives.</p>
@@ -37,7 +37,9 @@ LESSONS = [
      strings.</p>
      <p>A <code>String</code> is <em>immutable</em>: <code>toUpperCase</code> returns a new
      string and leaves the old one alone. To build text piece by piece, use a
-     <code>StringBuilder</code>. Text blocks (three double quotes, <code>&quot;&quot;&quot;</code>, Java 15) keep line breaks.</p>""", "15"),
+     <code>StringBuilder</code>: the <code>for</code> loop (explained in lesson 04) runs three
+     times, and each <code>append</code> adds to the end and hands back the same builder, so
+     two can be chained. Text blocks (three double quotes, <code>&quot;&quot;&quot;</code>, Java 15) keep line breaks.</p>""", "15"),
     ("ControlFlow", "control-flow", "Control flow",
      "if, a switch that returns a value, and a while loop.",
      """<p>The <code>switch</code> here is an <em>expression</em> (Java 14): each arrow
@@ -148,7 +150,7 @@ VERSIONS = [
 ECOSYSTEM = [
     ("Build tools", "Compile, test and package a project, and fetch its libraries.",
      [("Apache Maven", "https://maven.apache.org/guides/getting-started/"), ("Gradle", "https://docs.gradle.org/current/userguide/userguide.html")]),
-    ("Frameworks", "Most server-side Java is written on one of these.",
+    ("Frameworks", "Widely used frameworks for server-side Java.",
      [("Spring Boot", "https://docs.spring.io/spring-boot/"), ("Jakarta EE", "https://jakarta.ee/learn/"), ("Quarkus", "https://quarkus.io/guides/")]),
     ("Testing", "Write a test beside every class.",
      [("JUnit 5", "https://junit.org/junit5/docs/current/user-guide/")]),
@@ -156,7 +158,7 @@ ECOSYSTEM = [
      [("Kotlin", "https://kotlinlang.org/docs/home.html"), ("Scala", "https://docs.scala-lang.org/"), ("Learn Groovy (hands-on)", "https://learngroovy.shadw.app/"), ("Clojure", "https://clojure.org/guides/getting_started")]),
     ("Android", "Android apps are written in Java or Kotlin, against the Android SDK.",
      [("Android developers", "https://developer.android.com/guide")]),
-    ("The JDK itself", "Free builds of the Java Development Kit.",
+    ("The JDK and its documentation", "Free builds of the Java Development Kit, and the reference for its library.",
      [("OpenJDK", "https://openjdk.org/"), ("Eclipse Temurin", "https://adoptium.net/"), ("Java SE API documentation", "https://docs.oracle.com/en/java/javase/21/docs/api/")]),
 ]
 

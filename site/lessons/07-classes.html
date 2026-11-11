@@ -22,10 +22,10 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · lesson 7 of 13 <span class="idx">lessons[6]</span> · Java 5.0+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 7 of 13 · Java 5.0+</p>
   <h1>Classes and objects</h1>
   <p class="lede">Fields, a constructor, private state and toString.</p>
-  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:426"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:131"></span><span class="seg r6" style="flex-grow:36"></span></div><figcaption><code>Classes.class</code> is 611 bytes: magic 4, version 4, constant pool 426, header 10, methods 131, attributes 36. <a href="../jvm.html">What these parts are</a></figcaption></figure>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:8"></span><span class="seg r2" style="flex-grow:8"></span><span class="seg r3" style="flex-grow:1430"></span><span class="seg r4" style="flex-grow:36"></span><span class="seg r5" style="flex-grow:354"></span><span class="seg r6" style="flex-grow:92"></span></div><figcaption>From this program <code>javac</code> wrote 2 class files (<code>Classes$Account.class</code>, <code>Classes.class</code>), 1,928 bytes in all: magic 8, version 8, constant pool 1,430, header 36, methods 354, attributes 92. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
   <figcaption><span class="fname">Classes.java</span><span class="fmeta">24 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Classes</span> {
@@ -58,8 +58,9 @@
 }
 </code></pre>
   <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>Ada: 10.75</samp></pre></div>
-  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Classes.java &amp;&amp; java Classes</code></pre>
-  <p class="setup"><a download href="../examples/Classes.java">Download Classes.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Classes.java
+java Classes</code></pre>
+  <p class="setup"><a download href="../examples/Classes.java">Download Classes.java</a>, open a terminal in the folder you saved it to, and run the two lines. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
 </figure>
   <div class="notes"><p>A class describes objects; <code>new Account("Ada")</code> makes one.
      <code>private</code> fields can only be changed by the class’s own methods, so
@@ -70,8 +71,8 @@
      really replaces the method every object inherits from <code>Object</code>; that is the
      method <code>println</code> calls.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="06-arrays.html"><span>← lesson 6 · <span class='idx'>lessons[5]</span></span>Arrays</a>
-    <a class="next" href="08-interfaces.html"><span>lesson 8 · <span class='idx'>lessons[7]</span> →</span>Interfaces and polymorphism</a>
+    <a class="prev" href="06-arrays.html"><span>← lesson 6</span>Arrays</a>
+    <a class="next" href="08-interfaces.html"><span>lesson 8 →</span>Interfaces and polymorphism</a>
   </nav>
 </article>
 </main>

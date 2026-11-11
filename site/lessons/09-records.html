@@ -22,10 +22,10 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · lesson 9 of 13 <span class="idx">lessons[8]</span> · Java 21+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 9 of 13 · Java 21+</p>
   <h1>Records, sealed types and patterns</h1>
   <p class="lede">Modern Java: data classes in one line, closed hierarchies, and switch on shape.</p>
-  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:1453"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:513"></span><span class="seg r6" style="flex-grow:92"></span></div><figcaption><code>Records.class</code> is 2076 bytes: magic 4, version 4, constant pool 1453, header 10, methods 513, attributes 92. <a href="../jvm.html">What these parts are</a></figcaption></figure>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:20"></span><span class="seg r2" style="flex-grow:20"></span><span class="seg r3" style="flex-grow:4178"></span><span class="seg r4" style="flex-grow:88"></span><span class="seg r5" style="flex-grow:1287"></span><span class="seg r6" style="flex-grow:418"></span></div><figcaption>From this program <code>javac</code> wrote 5 class files (<code>Records$Circle.class</code>, <code>Records$Rect.class</code>, <code>Records$Shape.class</code>, <code>Records$Square.class</code>, <code>Records.class</code>), 6,011 bytes in all: magic 20, version 20, constant pool 4,178, header 88, methods 1,287, attributes 418. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
   <figcaption><span class="fname">Records.java</span><span class="fmeta">23 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Records</span> {
@@ -58,8 +58,9 @@
 Square[side=2.0] -&gt; 4.00
 Rect[w=2.0, h=3.0] -&gt; 6.00
 true</samp></pre></div>
-  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Records.java &amp;&amp; java Records</code></pre>
-  <p class="setup"><a download href="../examples/Records.java">Download Records.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Records.java
+java Records</code></pre>
+  <p class="setup"><a download href="../examples/Records.java">Download Records.java</a>, open a terminal in the folder you saved it to, and run the two lines. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
 </figure>
   <div class="notes"><p>A <code>record</code> (Java 16) is a class for plain data: the compiler writes the
      constructor, the accessors, <code>equals</code>, <code>hashCode</code> and
@@ -69,8 +70,8 @@ true</samp></pre></div>
      and it stops compiling. <code class="w">case Rect(double w, double h)</code> is a <em>record
      pattern</em> (Java 21): it checks the type and unpacks the fields in one step.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="08-interfaces.html"><span>← lesson 8 · <span class='idx'>lessons[7]</span></span>Interfaces and polymorphism</a>
-    <a class="next" href="10-collections.html"><span>lesson 10 · <span class='idx'>lessons[9]</span> →</span>Collections and generics</a>
+    <a class="prev" href="08-interfaces.html"><span>← lesson 8</span>Interfaces and polymorphism</a>
+    <a class="next" href="10-collections.html"><span>lesson 10 →</span>Collections and generics</a>
   </nav>
 </article>
 </main>

@@ -22,10 +22,10 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · lesson 8 of 13 <span class="idx">lessons[7]</span> · Java 9+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 8 of 13 · Java 9+</p>
   <h1>Interfaces and polymorphism</h1>
   <p class="lede">A contract, two classes that keep it, one loop over both.</p>
-  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:937"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:216"></span><span class="seg r6" style="flex-grow:56"></span></div><figcaption><code>Interfaces.class</code> is 1227 bytes: magic 4, version 4, constant pool 937, header 10, methods 216, attributes 56. <a href="../jvm.html">What these parts are</a></figcaption></figure>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:16"></span><span class="seg r2" style="flex-grow:16"></span><span class="seg r3" style="flex-grow:1603"></span><span class="seg r4" style="flex-grow:60"></span><span class="seg r5" style="flex-grow:426"></span><span class="seg r6" style="flex-grow:174"></span></div><figcaption>From this program <code>javac</code> wrote 4 class files (<code>Interfaces$Circle.class</code>, <code>Interfaces$Shape.class</code>, <code>Interfaces$Square.class</code>, <code>Interfaces.class</code>), 2,295 bytes in all: magic 16, version 16, constant pool 1,603, header 60, methods 426, attributes 174. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
   <figcaption><span class="fname">Interfaces.java</span><span class="fmeta">23 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">import</span> java.util.<span class="tt">List</span>;
@@ -58,16 +58,17 @@
 </code></pre>
   <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>Square 4.00
 Circle 3.14</samp></pre></div>
-  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Interfaces.java &amp;&amp; java Interfaces</code></pre>
-  <p class="setup"><a download href="../examples/Interfaces.java">Download Interfaces.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Interfaces.java
+java Interfaces</code></pre>
+  <p class="setup"><a download href="../examples/Interfaces.java">Download Interfaces.java</a>, open a terminal in the folder you saved it to, and run the two lines. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
 </figure>
   <div class="notes"><p>An <code>interface</code> lists methods without bodies; a class that
      <code>implements</code> it must provide them. The loop holds a <code>List&lt;Shape&gt;</code>
      and calls <code>area()</code>; which body runs is decided at run time by the actual object.
      That is <em>polymorphism</em>.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="07-classes.html"><span>← lesson 7 · <span class='idx'>lessons[6]</span></span>Classes and objects</a>
-    <a class="next" href="09-records.html"><span>lesson 9 · <span class='idx'>lessons[8]</span> →</span>Records, sealed types and patterns</a>
+    <a class="prev" href="07-classes.html"><span>← lesson 7</span>Classes and objects</a>
+    <a class="next" href="09-records.html"><span>lesson 9 →</span>Records, sealed types and patterns</a>
   </nav>
 </article>
 </main>

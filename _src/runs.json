@@ -3,546 +3,282 @@
  "built": "2026-11-11",
  "runs": {
   "Hello": {
-   "command": "javac -Xlint:all Hello.java && java Hello",
+   "command": "javac -Xlint:all Hello.java\njava Hello",
    "compiled": true,
    "warnings": [],
-   "class_size": 417,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     301
-    ],
-    [
-     "header",
-     301,
-     311
-    ],
-    [
-     "methods",
-     311,
-     407
-    ],
-    [
-     "attributes",
-     407,
-     417
-    ]
+   "class_files": [
+    "Hello.class"
    ],
+   "class_size": 417,
+   "region_bytes": {
+    "magic": 4,
+    "version": 4,
+    "pool": 293,
+    "header": 10,
+    "methods": 96,
+    "attributes": 10
+   },
    "stdout": "Hello, World!",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "Variables": {
-   "command": "javac -Xlint:all Variables.java && java Variables",
+   "command": "javac -Xlint:all Variables.java\njava Variables",
    "compiled": true,
    "warnings": [],
-   "class_size": 1283,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     999
-    ],
-    [
-     "header",
-     999,
-     1009
-    ],
-    [
-     "methods",
-     1009,
-     1231
-    ],
-    [
-     "attributes",
-     1231,
-     1283
-    ]
+   "class_files": [
+    "Variables.class"
    ],
+   "class_size": 1283,
+   "region_bytes": {
+    "magic": 4,
+    "version": 4,
+    "pool": 991,
+    "header": 10,
+    "methods": 222,
+    "attributes": 52
+   },
    "stdout": "Ada is 30, grade A\nstars: 100000000000, open: true\nprice: 4.5\nint is 4 bytes, long is 8 bytes\nlargest int: 2147483647\nlargest int + 1: -2147483648",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "Strings": {
-   "command": "javac -Xlint:all Strings.java && java Strings",
+   "command": "javac -Xlint:all Strings.java\njava Strings",
    "compiled": true,
    "warnings": [],
-   "class_size": 1558,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     1177
-    ],
-    [
-     "header",
-     1177,
-     1187
-    ],
-    [
-     "methods",
-     1187,
-     1506
-    ],
-    [
-     "attributes",
-     1506,
-     1558
-    ]
+   "class_files": [
+    "Strings.class"
    ],
+   "class_size": 1558,
+   "region_bytes": {
+    "magic": 4,
+    "version": 4,
+    "pool": 1169,
+    "header": 10,
+    "methods": 319,
+    "attributes": 52
+   },
    "stdout": "a == b: false\na.equals(b): true\njava -> JAVA\n1 2 3\nA text block keeps\nits line breaks.",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "ControlFlow": {
-   "command": "javac -Xlint:all ControlFlow.java && java ControlFlow",
+   "command": "javac -Xlint:all ControlFlow.java\njava ControlFlow",
    "compiled": true,
    "warnings": [],
-   "class_size": 1490,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     1005
-    ],
-    [
-     "header",
-     1005,
-     1015
-    ],
-    [
-     "methods",
-     1015,
-     1444
-    ],
-    [
-     "attributes",
-     1444,
-     1490
-    ]
+   "class_files": [
+    "ControlFlow.class"
    ],
+   "class_size": 1490,
+   "region_bytes": {
+    "magic": 4,
+    "version": 4,
+    "pool": 997,
+    "header": 10,
+    "methods": 429,
+    "attributes": 46
+   },
    "stdout": "mild\nSAT is a weekend\n27 reaches 1 in 111 steps",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "Methods": {
-   "command": "javac -Xlint:all Methods.java && java Methods",
+   "command": "javac -Xlint:all Methods.java\njava Methods",
    "compiled": true,
    "warnings": [],
-   "class_size": 1171,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     831
-    ],
-    [
-     "header",
-     831,
-     841
-    ],
-    [
-     "methods",
-     841,
-     1131
-    ],
-    [
-     "attributes",
-     1131,
-     1171
-    ]
+   "class_files": [
+    "Methods.class"
    ],
+   "class_size": 1171,
+   "region_bytes": {
+    "magic": 4,
+    "version": 4,
+    "pool": 823,
+    "header": 10,
+    "methods": 290,
+    "attributes": 40
+   },
    "stdout": "5\n2.75\n20! = 2432902008176640000",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "ArraysDemo": {
-   "command": "javac -Xlint:all ArraysDemo.java && java ArraysDemo",
+   "command": "javac -Xlint:all ArraysDemo.java\njava ArraysDemo",
    "compiled": true,
    "warnings": [],
-   "class_size": 1439,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     1069
-    ],
-    [
-     "header",
-     1069,
-     1079
-    ],
-    [
-     "methods",
-     1079,
-     1381
-    ],
-    [
-     "attributes",
-     1381,
-     1439
-    ]
+   "class_files": [
+    "ArraysDemo.class"
    ],
+   "class_size": 1439,
+   "region_bytes": {
+    "magic": 4,
+    "version": 4,
+    "pool": 1061,
+    "header": 10,
+    "methods": 302,
+    "attributes": 58
+   },
    "stdout": "length: 4\ntotal: 316\nsorted: [61, 72, 88, 95]\nchecked at run time: Index 4 out of bounds for length 4",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "Classes": {
-   "command": "javac -Xlint:all Classes.java && java Classes",
+   "command": "javac -Xlint:all Classes.java\njava Classes",
    "compiled": true,
    "warnings": [],
-   "class_size": 611,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     434
-    ],
-    [
-     "header",
-     434,
-     444
-    ],
-    [
-     "methods",
-     444,
-     575
-    ],
-    [
-     "attributes",
-     575,
-     611
-    ]
+   "class_files": [
+    "Classes$Account.class",
+    "Classes.class"
    ],
+   "class_size": 1928,
+   "region_bytes": {
+    "magic": 8,
+    "version": 8,
+    "pool": 1430,
+    "header": 36,
+    "methods": 354,
+    "attributes": 92
+   },
    "stdout": "Ada: 10.75",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "Interfaces": {
-   "command": "javac -Xlint:all Interfaces.java && java Interfaces",
+   "command": "javac -Xlint:all Interfaces.java\njava Interfaces",
    "compiled": true,
    "warnings": [],
-   "class_size": 1227,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     945
-    ],
-    [
-     "header",
-     945,
-     955
-    ],
-    [
-     "methods",
-     955,
-     1171
-    ],
-    [
-     "attributes",
-     1171,
-     1227
-    ]
+   "class_files": [
+    "Interfaces$Circle.class",
+    "Interfaces$Shape.class",
+    "Interfaces$Square.class",
+    "Interfaces.class"
    ],
+   "class_size": 2295,
+   "region_bytes": {
+    "magic": 16,
+    "version": 16,
+    "pool": 1603,
+    "header": 60,
+    "methods": 426,
+    "attributes": 174
+   },
    "stdout": "Square 4.00\nCircle 3.14",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "Records": {
-   "command": "javac -Xlint:all Records.java && java Records",
+   "command": "javac -Xlint:all Records.java\njava Records",
    "compiled": true,
    "warnings": [],
-   "class_size": 2076,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     1461
-    ],
-    [
-     "header",
-     1461,
-     1471
-    ],
-    [
-     "methods",
-     1471,
-     1984
-    ],
-    [
-     "attributes",
-     1984,
-     2076
-    ]
+   "class_files": [
+    "Records$Circle.class",
+    "Records$Rect.class",
+    "Records$Shape.class",
+    "Records$Square.class",
+    "Records.class"
    ],
+   "class_size": 6011,
+   "region_bytes": {
+    "magic": 20,
+    "version": 20,
+    "pool": 4178,
+    "header": 88,
+    "methods": 1287,
+    "attributes": 418
+   },
    "stdout": "Circle[r=1.0] -> 3.14\nSquare[side=2.0] -> 4.00\nRect[w=2.0, h=3.0] -> 6.00\ntrue",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "CollectionsDemo": {
-   "command": "javac -Xlint:all CollectionsDemo.java && java CollectionsDemo",
+   "command": "javac -Xlint:all CollectionsDemo.java\njava CollectionsDemo",
    "compiled": true,
    "warnings": [],
-   "class_size": 2433,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     1932
-    ],
-    [
-     "header",
-     1932,
-     1942
-    ],
-    [
-     "methods",
-     1942,
-     2387
-    ],
-    [
-     "attributes",
-     2387,
-     2433
-    ]
+   "class_files": [
+    "CollectionsDemo.class"
    ],
+   "class_size": 2433,
+   "region_bytes": {
+    "magic": 4,
+    "version": 4,
+    "pool": 1924,
+    "header": 10,
+    "methods": 445,
+    "attributes": 46
+   },
    "stdout": "[Java, Kotlin, Scala, Groovy, Clojure]\n{Java=1996, Kotlin=2016, Scala=2004}\nunique: 2\nlargest: Scala\nlargest: 9",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "Exceptions": {
-   "command": "javac -Xlint:all Exceptions.java && java Exceptions",
+   "command": "javac -Xlint:all Exceptions.java\njava Exceptions",
    "compiled": true,
    "warnings": [],
-   "class_size": 2219,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     1688
-    ],
-    [
-     "header",
-     1688,
-     1698
-    ],
-    [
-     "methods",
-     1698,
-     2167
-    ],
-    [
-     "attributes",
-     2167,
-     2219
-    ]
+   "class_files": [
+    "Exceptions.class"
    ],
+   "class_size": 2219,
+   "region_bytes": {
+    "magic": 4,
+    "version": 4,
+    "pool": 1680,
+    "header": 10,
+    "methods": 469,
+    "attributes": 52
+   },
    "stdout": "parsed 42\nnot a number: x\nparsed x\n42\nfirst line: one",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "Streams": {
-   "command": "javac -Xlint:all Streams.java && java Streams",
+   "command": "javac -Xlint:all Streams.java\njava Streams",
    "compiled": true,
    "warnings": [],
-   "class_size": 2775,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     2335
-    ],
-    [
-     "header",
-     2335,
-     2345
-    ],
-    [
-     "methods",
-     2345,
-     2687
-    ],
-    [
-     "attributes",
-     2687,
-     2775
-    ]
+   "class_files": [
+    "Streams$Lang.class",
+    "Streams.class"
    ],
+   "class_size": 4043,
+   "region_bytes": {
+    "magic": 8,
+    "version": 8,
+    "pool": 3187,
+    "header": 36,
+    "methods": 634,
+    "attributes": 170
+   },
    "stdout": "Clojure, Groovy, Kotlin, Scala\naverage year: 2005",
    "exit": 0,
    "min_release_ok": true,
    "min_release_tight": true
   },
   "Threads": {
-   "command": "javac -Xlint:all Threads.java && java Threads",
+   "command": "javac -Xlint:all Threads.java\njava Threads",
    "compiled": true,
    "warnings": [],
-   "class_size": 2274,
-   "regions": [
-    [
-     "magic",
-     0,
-     4
-    ],
-    [
-     "version",
-     4,
-     8
-    ],
-    [
-     "pool",
-     8,
-     1873
-    ],
-    [
-     "header",
-     1873,
-     1883
-    ],
-    [
-     "methods",
-     1883,
-     2224
-    ],
-    [
-     "attributes",
-     2224,
-     2274
-    ]
+   "class_files": [
+    "Threads.class"
    ],
+   "class_size": 2274,
+   "region_bytes": {
+    "magic": 4,
+    "version": 4,
+    "pool": 1865,
+    "header": 10,
+    "methods": 341,
+    "attributes": 50
+   },
    "stdout": "tasks finished: 10000",
    "exit": 0,
    "min_release_ok": true,

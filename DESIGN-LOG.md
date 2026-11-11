@@ -163,3 +163,50 @@ Depends on: M3. Anchors: Breaker The Medium Is the Massage (Marshall McLuhan, Qu
 Intent: every lesson shows the file its program becomes; the JVM page reads Hello.class part by part; the magic number becomes the largest thing on the home page.
 Alternatives rejected: a full dump on every lesson (2,000+ bytes is noise); no device inside (Shklovsky R1).
 Mode field: Advanced pole: the medium on every page. Acceptable pole: one thin strip with its counts in words, and a link that explains it.
+
+### Panel, WHOLE, round R2 (artifact: the hex-dump home page after M5 to M7; reports in panel/R2/)
+| Critic | Anchor used | Observed in the work | Verdict PASS/OBJECT | Requested change |
+|---|---|---|---|---|
+| Critic: Usability (Krug) | Don't Make Me Think (Steve Krug) | start button and card destinations on the first screen at both sizes; probe and trunk test pass | PASS | optional: titles on tiles; drop the indices; wrap the javap comments |
+| Critic: Inclusion (Mace) | The Universal Design principles (Ronald Mace) | Tab order follows the visual order at 390; current-page border in forced colours; magic 5.24:1 | PASS | a border on `.start` in forced colours |
+| Critic: Evidence (Cairo) | How Charts Lie (Alberto Cairo) | every ribbon and JVM figure reproduces; ribbons show only the outer class (lessons 07, 08, 09 and 12 compile to 2 to 5 files); `lessons[13]` is out of range | OBJECT | caption every class file; drop the indices |
+| Critic: Evidence (Tufte) | The Visual Display of Quantitative Information (Edward Tufte) | captions true; a 3 px minimum inflates small segments (lie factor up to 6.25); phone bytes 8.6 px; lesson 07 ribbon lacks Account | OBJECT | drop the floor; log the phone-dump decision; show the nested classes |
+| Critic: Provocateur (Debord) | The Society of the Spectacle (Guy Debord) | R1 fixes hold; `&&` fails in Windows PowerShell 5.1; brew openjdk@21 is keg-only; openjdk-21-jdk is not in Debian 12; "most server-side Java"; "45 (Java 1.1)" | OBJECT | per finding |
+| Critic: Inclusion (Holmes) | Mismatch (Kat Holmes) | the phone destination is aria-hidden (label in name); run-together name at 1280; indices read aloud; lesson 03 loop unexplained; lesson 02 assumes C | OBJECT | per finding |
+
+Shklovsky and Gautier were not convened in R2: the owner graded the run before their batch, see below.
+
+## Human grade
+- **Grade:** B+ (2026-11-11), given on the hex-dump home page (saved as branch `design/hexdump-b-plus`).
+- **The owner's words, verbatim:** "This is okay B plus save as a branch but also do a more coffee type theme haha and  colors too similar keep that code chart somewhere"
+- **What it most likely rewards and punishes:** it rewards a real, true signature graphic (the class file) and the built-in rigour. It punishes a look that was too cool for the subject: six pastel tints of similar value, and a hex dump as the whole first impression. The owner asked for the coffee theme Java's name invites.
+
+#### Resolutions, round R2
+| Finding | Resolution |
+|---|---|
+| Tufte: "3 px minimum inflates small segments" | ADAPT (M9): no minimum and no gaps; a 1 px inset divider sits inside each segment, so widths are true to the byte |
+| Cairo + Tufte: "ribbons show only the outer class" | ADAPT (M9): each ribbon sums every class file javac writes for the lesson and names them (Records: 5 files, 6,011 bytes) |
+| Tufte: "phone dump bytes 8.6 px" | OVERRULE (premise refuted: measured trade). The dump is aria-hidden, and its six-part legend carries the meaning in text at every width. 8 bytes per row doubles the dump's height. The dump now lives on the JVM page, not the home page |
+| Cairo + Holmes + Krug: "indices out of range / read aloud" | ADAPT (M9): `lessons[n]` removed everywhere |
+| Holmes: "phone destination aria-hidden; run-together name" | ADAPT (M9): one destination per card, visible at every width, after a space |
+| Holmes: "lesson 03 loop" | ADAPT (M9): one sentence on the loop and the chained `append` |
+| Holmes: "lesson 02 assumes C" | ADAPT (M9): the C clause is cut |
+| Debord: "`&&` in PowerShell 5.1" | ADAPT (M9): each program's command is two lines, which work in every shell, and About says why |
+| Debord: "brew openjdk@21 is keg-only" | ADAPT (M9): `brew install --cask temurin@21` |
+| Debord: "Debian 12" | ADAPT (M9): "Ubuntu 24.04" |
+| Debord: "most server-side Java" | ADAPT (M9): "Widely used frameworks for server-side Java"; the heading becomes "The JDK and its documentation" |
+| Debord: "45 (Java 1.1)" | ADAPT (M9): "45 (Java 1.0 and 1.1)" |
+| Mace: "`.start` in forced colours" | ADAPT (M8): a 2 px border always, and CanvasText in forced colours |
+| Krug: "javap comments clipped at 1280" | DEFERRED: the javap block scrolls inside its own box, and the page does not overflow |
+| Owner: "more coffee type theme; colours too similar; keep that code chart somewhere" | ADAPT (M8), below |
+
+## Move M8: The café (a frame swap ordered by the owner's grade)
+Depends on: M3 (superseded on the home page; kept on the JVM page). Anchors: Stance A Designer's Art (Paul Rand) (wit kept: the saucer reads `0xCAFEBABE`) | Rule Thinking with Type (Ellen Lupton).
+Intent: the home page becomes a latte glass whose four layers are the site: espresso (the lessons), caramel (Inside the JVM), steamed milk (Versions) and foam (Ecosystem). Each layer is a link with a computed figure. A chalkboard menu lists all 13 lessons, with each lesson's minimum Java version as its "price". The hex-dump chart moves, whole, to the JVM page.
+Colours: the four layers step clearly in value (light: foam 13.98:1 under espresso text, ink on caramel 5.73:1, ink on milk 12.09:1). The six class-file parts take six distinct hues (cherry, caramel, sage, cocoa, steel blue, plum) instead of six pastels of one value.
+Alternatives rejected: a coffee-cup photo (no data, and the summary rule needs a mark per topic); keeping the dump as the hero with brown tints (the owner asked for coffee, not a recoloured dump).
+Mode field: Advanced pole: the site drawn as a drink, each layer true and linked. Acceptable pole: a café menu, the most familiar list there is.
+Measured after the edit: 20 pages × 3 sizes × 2 schemes; 0 overflow; smallest text 12 px; 0 targets under 44 px. Hero bottom: 746 px at 1280x800 (menu); at 375x812 the glass ends at 665 and the saucer at 735, and the menu follows below the fold (the four layers link every page). In dark mode, espresso was #120b07 on a #18110c page, nearly invisible; it was lifted to #5b3926 (foam text 8.55:1).
+
+## Move M9: R2 corrections (KEEP-THE-RULE)
+Depends on: M6, M7. True-width ribbons over every class file, two-line commands, accessible card names, and the setup and claim fixes above.

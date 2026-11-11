@@ -22,10 +22,10 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · lesson 2 of 13 <span class="idx">lessons[1]</span> · Java 10+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 2 of 13 · Java 10+</p>
   <h1>Variables and types</h1>
   <p class="lede">Eight primitive types, var, and what happens past the largest int.</p>
-  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:991"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:222"></span><span class="seg r6" style="flex-grow:52"></span></div><figcaption><code>Variables.class</code> is 1283 bytes: magic 4, version 4, constant pool 991, header 10, methods 222, attributes 52. <a href="../jvm.html">What these parts are</a></figcaption></figure>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:991"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:222"></span><span class="seg r6" style="flex-grow:52"></span></div><figcaption>From this program <code>javac</code> wrote 1 class file (<code>Variables.class</code>), 1,283 bytes in all: magic 4, version 4, constant pool 991, header 10, methods 222, attributes 52. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
   <figcaption><span class="fname">Variables.java</span><span class="fmeta">19 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Variables</span> {
@@ -55,15 +55,16 @@ price: 4.5
 int is 4 bytes, long is 8 bytes
 largest int: 2147483647
 largest int + 1: -2147483648</samp></pre></div>
-  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Variables.java &amp;&amp; java Variables</code></pre>
-  <p class="setup"><a download href="../examples/Variables.java">Download Variables.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Variables.java
+java Variables</code></pre>
+  <p class="setup"><a download href="../examples/Variables.java">Download Variables.java</a>, open a terminal in the folder you saved it to, and run the two lines. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
 </figure>
   <div class="notes"><p>A <em>type</em> says what kind of value a variable holds. Java has eight
      <em>primitive</em> types, which hold a plain value directly:
      <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>,
      <code>float</code>, <code>double</code>, <code>char</code> and <code>boolean</code>.
      Their sizes are the same on every machine: an <code>int</code> is always 4 bytes (32
-     bits), where in C it depends on the computer. A floating-point type such as
+     bits). A floating-point type such as
      <code>double</code> holds numbers with a fractional part. Everything else, a
      <code>String</code> included, is an <em>object</em>: the variable holds a
      <em>reference</em>, the address where the object lives.</p>
@@ -71,8 +72,8 @@ largest int + 1: -2147483648</samp></pre></div>
      still fixed. The last line shows overflow: one more than the largest <code>int</code>
      wraps around to the most negative one, silently.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="01-hello.html"><span>← lesson 1 · <span class='idx'>lessons[0]</span></span>Hello, World</a>
-    <a class="next" href="03-strings.html"><span>lesson 3 · <span class='idx'>lessons[2]</span> →</span>Strings</a>
+    <a class="prev" href="01-hello.html"><span>← lesson 1</span>Hello, World</a>
+    <a class="next" href="03-strings.html"><span>lesson 3 →</span>Strings</a>
   </nav>
 </article>
 </main>

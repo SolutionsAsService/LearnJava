@@ -22,10 +22,10 @@
 </header>
 <main id="main">
 <article class="wrap">
-  <p class="kicker"><a href="index.html">Lessons</a> · lesson 12 of 13 <span class="idx">lessons[11]</span> · Java 16+</p>
+  <p class="kicker"><a href="index.html">Lessons</a> · lesson 12 of 13 · Java 16+</p>
   <h1>Lambdas and streams</h1>
   <p class="lede">Filter, map, sort and join a list in one expression.</p>
-  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:4"></span><span class="seg r2" style="flex-grow:4"></span><span class="seg r3" style="flex-grow:2327"></span><span class="seg r4" style="flex-grow:10"></span><span class="seg r5" style="flex-grow:342"></span><span class="seg r6" style="flex-grow:88"></span></div><figcaption><code>Streams.class</code> is 2775 bytes: magic 4, version 4, constant pool 2327, header 10, methods 342, attributes 88. <a href="../jvm.html">What these parts are</a></figcaption></figure>
+  <figure class="ribbon"><div class="segs" aria-hidden="true"><span class="seg r1" style="flex-grow:8"></span><span class="seg r2" style="flex-grow:8"></span><span class="seg r3" style="flex-grow:3187"></span><span class="seg r4" style="flex-grow:36"></span><span class="seg r5" style="flex-grow:634"></span><span class="seg r6" style="flex-grow:170"></span></div><figcaption>From this program <code>javac</code> wrote 2 class files (<code>Streams$Lang.class</code>, <code>Streams.class</code>), 4,043 bytes in all: magic 8, version 8, constant pool 3,187, header 36, methods 634, attributes 170. <a href="../jvm.html">What these parts are</a></figcaption></figure>
   <figure class="ex">
   <figcaption><span class="fname">Streams.java</span><span class="fmeta">20 lines</span></figcaption>
   <pre class="code"><code class="b"><span class="tk">import</span> java.util.<span class="tt">List</span>;
@@ -55,8 +55,9 @@
 </code></pre>
   <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>Clojure, Groovy, Kotlin, Scala
 average year: 2005</samp></pre></div>
-  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Streams.java &amp;&amp; java Streams</code></pre>
-  <p class="setup"><a download href="../examples/Streams.java">Download Streams.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Streams.java
+java Streams</code></pre>
+  <p class="setup"><a download href="../examples/Streams.java">Download Streams.java</a>, open a terminal in the folder you saved it to, and run the two lines. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
 </figure>
   <div class="notes"><p>A <em>lambda</em>, <code class="w">l -&gt; l.year() &gt; 2000</code>, is a function written in
      place. A <em>method reference</em>, <code>Lang::name</code>, names an existing method
@@ -65,8 +66,8 @@ average year: 2005</samp></pre></div>
      Java 8; this program also declares a <code>record</code>, which is why it needs Java
      16.</p></div>
   <nav class="pager" aria-label="Lessons">
-    <a class="prev" href="11-exceptions.html"><span>← lesson 11 · <span class='idx'>lessons[10]</span></span>Exceptions</a>
-    <a class="next" href="13-threads.html"><span>lesson 13 · <span class='idx'>lessons[12]</span> →</span>Virtual threads</a>
+    <a class="prev" href="11-exceptions.html"><span>← lesson 11</span>Exceptions</a>
+    <a class="next" href="13-threads.html"><span>lesson 13 →</span>Virtual threads</a>
   </nav>
 </article>
 </main>
