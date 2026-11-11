@@ -174,7 +174,7 @@ Mode field: Advanced pole: the medium on every page. Acceptable pole: one thin s
 | Critic: Provocateur (Debord) | The Society of the Spectacle (Guy Debord) | R1 fixes hold; `&&` fails in Windows PowerShell 5.1; brew openjdk@21 is keg-only; openjdk-21-jdk is not in Debian 12; "most server-side Java"; "45 (Java 1.1)" | OBJECT | per finding |
 | Critic: Inclusion (Holmes) | Mismatch (Kat Holmes) | the phone destination is aria-hidden (label in name); run-together name at 1280; indices read aloud; lesson 03 loop unexplained; lesson 02 assumes C | OBJECT | per finding |
 
-Shklovsky and Gautier were not convened in R2: the owner graded the run before their batch, see below.
+Shklovsky and Gautier were not convened in R2: the owner gave direction before their batch, see below.
 
 ## Owner's direction (after R2)
 The owner asked for "a more coffee type theme", said the colours were "too similar", and asked to "keep that code chart somewhere". The hex-dump home page is kept on the branch `design/hexdump-b-plus`. (Grades are recorded in the DADA repositories, not here.)
@@ -254,7 +254,7 @@ Measured after the last edit: 20 pages × 1280x800, 375x812 and 390x844 × light
 - **S1** met: every objection is ADAPT, OVERRULE (with a measurement) or DEFERRED (the javap block scrolls inside its own box).
 - **S2** met in part. The required seats' last verdicts: Krug, Cairo and Mace PASS (Krug R3, Cairo R3, Mace R2); Holmes, Debord and Tufte OBJECT in their last rounds, with every finding applied since; Shklovsky and Gautier last sat in R1, on the hex-dump home page. No single WHOLE round has had every required seat pass. **Not fully met.**
 - **S3 NOT met**: every round produced ADAPTs.
-- **S4** met before the owner's grade, by escalation: the magic number from headline size to clamp(60px, 7.2vw, 120px), the largest element, and the class file carried into every lesson (M7). The owner then ordered a frame swap (M8) whose own push, the glass at 1.25×, was measured (M10).
+- **S4** met before the owner's direction, by escalation: the magic number from headline size to clamp(60px, 7.2vw, 120px), the largest element, and the class file carried into every lesson (M7). The owner then ordered a frame swap (M8) whose own push, the glass at 1.25×, was measured (M10).
 - **S5**: `mcluhan -.-> carson` applied (M3, then superseded by M8); `wcag -.-> carson` applied as the floor.
 - The run stops here at the owner's direction. To resume: convene Shklovsky, Gautier, Holmes, Tufte and Debord on the café as it stands.
 
@@ -264,7 +264,7 @@ Measured after the last edit: 20 pages × 1280x800, 375x812 and 390x844 × light
 | A Designer's Art (Paul Rand) | Stance | KEEP | wit survives in the saucer's `0xCAFEBABE` and the menu prices |
 | Thinking with Type (Ellen Lupton) | Rule | KEEP | the byte cell sets the code column; the 74-column programs |
 | Grid Systems in Graphic Design (Josef Müller-Brockmann) | Rule | ADAPT | the 16-byte grid now lives on the JVM page |
-| The Medium Is the Massage (Marshall McLuhan, Quentin Fiore) | Breaker | ADAPT | the class file left the home page after the owner's B+ ("more coffee"), and stays on the JVM page and in every lesson's ribbon |
+| The Medium Is the Massage (Marshall McLuhan, Quentin Fiore) | Breaker | ADAPT | the class file left the home page after the owner asked for "more coffee", and stays on the JVM page and in every lesson's ribbon |
 | The End of Print (David Carson, Lewis Blackwell) | Counterpoint | SCRAP on home, KEEP on the JVM page | the giant magic number is retired from the home page |
 | WCAG 2.2 Contrast and Perceivability (W3C) | Floor | KEEP | every round's focus and contrast fixes |
 
