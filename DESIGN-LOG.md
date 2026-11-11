@@ -176,10 +176,8 @@ Mode field: Advanced pole: the medium on every page. Acceptable pole: one thin s
 
 Shklovsky and Gautier were not convened in R2: the owner graded the run before their batch, see below.
 
-## Human grade
-- **Grade:** B+ (2026-11-11), given on the hex-dump home page (saved as branch `design/hexdump-b-plus`).
-- **The owner's words, verbatim:** "This is okay B plus save as a branch but also do a more coffee type theme haha and  colors too similar keep that code chart somewhere"
-- **What it most likely rewards and punishes:** it rewards a real, true signature graphic (the class file) and the built-in rigour. It punishes a look that was too cool for the subject: six pastel tints of similar value, and a hex dump as the whole first impression. The owner asked for the coffee theme Java's name invites.
+## Owner's direction (after R2)
+The owner asked for "a more coffee type theme", said the colours were "too similar", and asked to "keep that code chart somewhere". The hex-dump home page is kept on the branch `design/hexdump-b-plus`. (Grades are recorded in the DADA repositories, not here.)
 
 #### Resolutions, round R2
 | Finding | Resolution |
@@ -200,7 +198,7 @@ Shklovsky and Gautier were not convened in R2: the owner graded the run before t
 | Krug: "javap comments clipped at 1280" | DEFERRED: the javap block scrolls inside its own box, and the page does not overflow |
 | Owner: "more coffee type theme; colours too similar; keep that code chart somewhere" | ADAPT (M8), below |
 
-## Move M8: The café (a frame swap ordered by the owner's grade)
+## Move M8: The café (a frame swap ordered by the owner)
 Depends on: M3 (superseded on the home page; kept on the JVM page). Anchors: Stance A Designer's Art (Paul Rand) (wit kept: the saucer reads `0xCAFEBABE`) | Rule Thinking with Type (Ellen Lupton).
 Intent: the home page becomes a latte glass whose four layers are the site: espresso (the lessons), caramel (Inside the JVM), steamed milk (Versions) and foam (Ecosystem). Each layer is a link with a computed figure. A chalkboard menu lists all 13 lessons, with each lesson's minimum Java version as its "price". The hex-dump chart moves, whole, to the JVM page.
 Colours: the four layers step clearly in value (light: foam 13.98:1 under espresso text, ink on caramel 5.73:1, ink on milk 12.09:1). The six class-file parts take six distinct hues (cherry, caramel, sage, cocoa, steel blue, plum) instead of six pastels of one value.
@@ -256,7 +254,7 @@ Measured after the last edit: 20 pages × 1280x800, 375x812 and 390x844 × light
 - **S1** met: every objection is ADAPT, OVERRULE (with a measurement) or DEFERRED (the javap block scrolls inside its own box).
 - **S2** met in part. The required seats' last verdicts: Krug, Cairo and Mace PASS (Krug R3, Cairo R3, Mace R2); Holmes, Debord and Tufte OBJECT in their last rounds, with every finding applied since; Shklovsky and Gautier last sat in R1, on the hex-dump home page. No single WHOLE round has had every required seat pass. **Not fully met.**
 - **S3 NOT met**: every round produced ADAPTs.
-- **S4** met before the owner's grade, by escalation: the magic number from headline size to clamp(60px, 7.2vw, 120px), the largest element, and the class file carried into every lesson (M7). The owner's grade then ordered a frame swap (M8) whose own push, the glass at 1.25×, was measured (M10).
+- **S4** met before the owner's grade, by escalation: the magic number from headline size to clamp(60px, 7.2vw, 120px), the largest element, and the class file carried into every lesson (M7). The owner then ordered a frame swap (M8) whose own push, the glass at 1.25×, was measured (M10).
 - **S5**: `mcluhan -.-> carson` applied (M3, then superseded by M8); `wcag -.-> carson` applied as the floor.
 - The run stops here at the owner's direction. To resume: convene Shklovsky, Gautier, Holmes, Tufte and Debord on the café as it stands.
 
@@ -271,7 +269,7 @@ Measured after the last edit: 20 pages × 1280x800, 375x812 and 390x844 × light
 | WCAG 2.2 Contrast and Perceivability (W3C) | Floor | KEEP | every round's focus and contrast fixes |
 
 ## Double loop
-The panel judged the hex dump true, legible and strange, and still the owner graded it B+, because it was cool where Java's own name is warm. No seat holds "does this feel like its subject": Shklovsky asks whether it is strange, Arnheim whether it balances, Cairo whether it is true. **Graph amendment:** on a learning site, seat a critic of subject character (a Sharp or Hara seat: "does the first screen feel like the thing it teaches?") from R1, and treat a name that invites a theme (Java and coffee) as a Frontier candidate, not a cliché to be refused. M3's rejection of "a coffee cup, a cliché" was the run's costliest decision.
+The panel judged the hex dump true, legible and strange, and still the owner asked for something else, because it was cool where Java's own name is warm. No seat holds "does this feel like its subject": Shklovsky asks whether it is strange, Arnheim whether it balances, Cairo whether it is true. **Graph amendment:** on a learning site, seat a critic of subject character (a Sharp or Hara seat: "does the first screen feel like the thing it teaches?") from R1, and treat a name that invites a theme (Java and coffee) as a Frontier candidate, not a cliché to be refused. M3's rejection of "a coffee cup, a cliché" was the run's costliest decision.
 
 ## Carry-Forward Ledger
 See `CARRY-FORWARD.md`.
@@ -288,4 +286,4 @@ See `CARRY-FORWARD.md`.
 - [ ] S2 not fully met, and S3 not met (see Stop test)
 - [x] Every displayed figure re-measured at the final state (2g)
 - [x] Anchor Ledger, double loop, carry-forward
-- [x] Human grade recorded (B+, on the hex-dump version)
+- [x] Grades recorded in the DADA repositories only (dada-changes ledger), not in this repository
