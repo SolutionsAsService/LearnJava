@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lambdas and streams (lesson 12) · Learn Java</title>
+<meta name="description" content="Java lesson 12: Filter, map, sort and join a list in one expression.">
+<meta property="og:title" content="Lambdas and streams (lesson 12) · Learn Java">
+<meta property="og:description" content="Java lesson 12: Filter, map, sort and join a list in one expression.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[11]</code> · lesson 12 of 13 · Java 16+</p>
+  <h1>Lambdas and streams</h1>
+  <p class="lede">Filter, map, sort and join a list in one expression.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">Streams.java</span><span class="fmeta">17 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tk">import</span> java.util.<span class="tt">List</span>;
+<span class="tk">import</span> java.util.stream.<span class="tt">Collectors</span>;
+
+<span class="tk">public</span> <span class="tk">class</span> <span class="tt">Streams</span> {
+    <span class="tk">record</span> <span class="tt">Lang</span>(<span class="tt">String</span> name, <span class="tk">int</span> year) {}
+
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
+        <span class="tt">List</span>&lt;<span class="tt">Lang</span>&gt; jvm = <span class="tt">List</span>.of(<span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Java&quot;</span>, <span class="tn">1996</span>), <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Groovy&quot;</span>, <span class="tn">2003</span>),
+                                 <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Scala&quot;</span>, <span class="tn">2004</span>), <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Clojure&quot;</span>, <span class="tn">2007</span>), <span class="tk">new</span> <span class="tt">Lang</span>(<span class="ts">&quot;Kotlin&quot;</span>, <span class="tn">2016</span>));
+
+        <span class="tt">String</span> after2000 = jvm.stream()
+            .filter(l -&gt; l.year() &gt; <span class="tn">2000</span>)               <span class="tc">// a lambda: a function written in place</span>
+            .map(<span class="tt">Lang</span>::name)                            <span class="tc">// a method reference</span>
+            .sorted()
+            .collect(<span class="tt">Collectors</span>.joining(<span class="ts">&quot;, &quot;</span>));
+        <span class="tt">System</span>.out.println(after2000);
+
+        <span class="tk">int</span> total = jvm.stream().mapToInt(<span class="tt">Lang</span>::year).sum();
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;average year: &quot;</span> + total / jvm.size());
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>Clojure, Groovy, Kotlin, Scala
+average year: 2005</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Streams.java &amp;&amp; java Streams</code></pre>
+  <p class="setup"><a download href="../examples/Streams.java">Download Streams.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p>A <em>lambda</em>, <code class="w">l -&gt; l.year() &gt; 2000</code>, is a function written in
+     place. A <em>method reference</em>, <code>Lang::name</code>, names an existing method
+     instead. A <em>stream</em> passes each element through the steps in order; nothing
+     happens until <code>collect</code> asks for the result. All of this arrived in Java 8.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="11-exceptions.html"><span>← lessons[10]</span>Exceptions</a>
+    <a class="next" href="13-threads.html"><span>lessons[12] →</span>Virtual threads</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

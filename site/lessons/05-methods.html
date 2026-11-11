@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Methods (lesson 5) · Learn Java</title>
+<meta name="description" content="Java lesson 5: Static methods, overloading by type, and recursion.">
+<meta property="og:title" content="Methods (lesson 5) · Learn Java">
+<meta property="og:description" content="Java lesson 5: Static methods, overloading by type, and recursion.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[4]</code> · lesson 5 of 13 · Java 1.0+</p>
+  <h1>Methods</h1>
+  <p class="lede">Static methods, overloading by type, and recursion.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">Methods.java</span><span class="fmeta">12 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Methods</span> {
+    <span class="tk">static</span> <span class="tk">int</span> add(<span class="tk">int</span> a, <span class="tk">int</span> b) { <span class="tk">return</span> a + b; }
+    <span class="tk">static</span> <span class="tk">double</span> add(<span class="tk">double</span> a, <span class="tk">double</span> b) { <span class="tk">return</span> a + b; }   <span class="tc">// overload: same name, other types</span>
+
+    <span class="tk">static</span> <span class="tk">long</span> factorial(<span class="tk">int</span> n) {
+        <span class="tk">return</span> n &lt;= <span class="tn">1</span> ? <span class="tn">1</span> : n * factorial(n - <span class="tn">1</span>);              <span class="tc">// calls itself</span>
+    }
+
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
+        <span class="tt">System</span>.out.println(add(<span class="tn">2</span>, <span class="tn">3</span>));
+        <span class="tt">System</span>.out.println(add(<span class="tn">2.5</span>, <span class="tn">0.25</span>));
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;20! = &quot;</span> + factorial(<span class="tn">20</span>));
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>5
+2.75
+20! = 2432902008176640000</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Methods.java &amp;&amp; java Methods</code></pre>
+  <p class="setup"><a download href="../examples/Methods.java">Download Methods.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p>A <code>static</code> method belongs to the class, so <code>main</code> can call it
+     without making an object. Two methods may share a name if their parameter types differ
+     (<em>overloading</em>); the compiler picks one from the arguments. <code>factorial</code>
+     uses <code>long</code> because 20! is larger than the biggest <code>int</code>.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="04-control-flow.html"><span>← lessons[3]</span>Control flow</a>
+    <a class="next" href="06-arrays.html"><span>lessons[5] →</span>Arrays</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

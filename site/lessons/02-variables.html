@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Variables and types (lesson 2) · Learn Java</title>
+<meta name="description" content="Java lesson 2: Eight primitive types, var, and what happens past the largest int.">
+<meta property="og:title" content="Variables and types (lesson 2) · Learn Java">
+<meta property="og:description" content="Java lesson 2: Eight primitive types, var, and what happens past the largest int.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[1]</code> · lesson 2 of 13 · Java 10+</p>
+  <h1>Variables and types</h1>
+  <p class="lede">Eight primitive types, var, and what happens past the largest int.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">Variables.java</span><span class="fmeta">15 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Variables</span> {
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
+        <span class="tk">int</span> age = <span class="tn">30</span>;               <span class="tc">// 32-bit whole number</span>
+        <span class="tk">long</span> stars = <span class="tn">100_000_000_000L</span>; <span class="tc">// 64-bit; underscores are just for reading</span>
+        <span class="tk">double</span> price = <span class="tn">4.50</span>;        <span class="tc">// 64-bit floating point</span>
+        <span class="tk">boolean</span> open = <span class="tk">true</span>;        <span class="tc">// true or false, nothing else</span>
+        <span class="tk">char</span> grade = <span class="ts">&#x27;A&#x27;</span>;           <span class="tc">// one UTF-16 code unit</span>
+        <span class="tk">var</span> name = <span class="ts">&quot;Ada&quot;</span>;           <span class="tc">// the compiler infers String</span>
+
+        <span class="tt">System</span>.out.println(name + <span class="ts">&quot; is &quot;</span> + age + <span class="ts">&quot;, grade &quot;</span> + grade);
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;stars: &quot;</span> + stars + <span class="ts">&quot;, open: &quot;</span> + open + <span class="ts">&quot;, price: &quot;</span> + price);
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;int is &quot;</span> + <span class="tt">Integer</span>.<span class="tt">BYTES</span> + <span class="ts">&quot; bytes, long is &quot;</span> + <span class="tt">Long</span>.<span class="tt">BYTES</span> + <span class="ts">&quot; bytes&quot;</span>);
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;largest int: &quot;</span> + <span class="tt">Integer</span>.<span class="tt">MAX_VALUE</span>);
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;largest int + 1: &quot;</span> + (<span class="tt">Integer</span>.<span class="tt">MAX_VALUE</span> + <span class="tn">1</span>)); <span class="tc">// wraps around</span>
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>Ada is 30, grade A
+stars: 100000000000, open: true, price: 4.5
+int is 4 bytes, long is 8 bytes
+largest int: 2147483647
+largest int + 1: -2147483648</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Variables.java &amp;&amp; java Variables</code></pre>
+  <p class="setup"><a download href="../examples/Variables.java">Download Variables.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p>Java has eight <em>primitive</em> types, which hold a value directly:
+     <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>,
+     <code>float</code>, <code>double</code>, <code>char</code> and <code>boolean</code>.
+     Unlike C, their sizes are the same on every machine: an <code>int</code> is always 4 bytes.
+     Everything else, a <code>String</code> included, is an <em>object</em>, reached through a
+     reference.</p>
+     <p><code>var</code> (Java 10) lets the compiler infer a local variable’s type; the type is
+     still fixed. The last line shows overflow: one more than the largest <code>int</code>
+     wraps around to the most negative one, silently.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="01-hello.html"><span>← lessons[0]</span>Hello, World</a>
+    <a class="next" href="03-strings.html"><span>lessons[2] →</span>Strings</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

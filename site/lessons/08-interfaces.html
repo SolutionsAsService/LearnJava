@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Interfaces and polymorphism (lesson 8) · Learn Java</title>
+<meta name="description" content="Java lesson 8: A contract, two classes that keep it, one loop over both.">
+<meta property="og:title" content="Interfaces and polymorphism (lesson 8) · Learn Java">
+<meta property="og:description" content="Java lesson 8: A contract, two classes that keep it, one loop over both.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[7]</code> · lesson 8 of 13 · Java 9+</p>
+  <h1>Interfaces and polymorphism</h1>
+  <p class="lede">A contract, two classes that keep it, one loop over both.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">Interfaces.java</span><span class="fmeta">20 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tk">import</span> java.util.<span class="tt">List</span>;
+
+<span class="tk">public</span> <span class="tk">class</span> <span class="tt">Interfaces</span> {
+    <span class="tk">interface</span> <span class="tt">Shape</span> { <span class="tk">double</span> area(); }                  <span class="tc">// a contract, no body</span>
+
+    <span class="tk">static</span> <span class="tk">class</span> <span class="tt">Square</span> <span class="tk">implements</span> <span class="tt">Shape</span> {
+        <span class="tk">final</span> <span class="tk">double</span> side;
+        <span class="tt">Square</span>(<span class="tk">double</span> side) { <span class="tk">this</span>.side = side; }
+        <span class="tk">public</span> <span class="tk">double</span> area() { <span class="tk">return</span> side * side; }
+    }
+
+    <span class="tk">static</span> <span class="tk">class</span> <span class="tt">Circle</span> <span class="tk">implements</span> <span class="tt">Shape</span> {
+        <span class="tk">final</span> <span class="tk">double</span> r;
+        <span class="tt">Circle</span>(<span class="tk">double</span> r) { <span class="tk">this</span>.r = r; }
+        <span class="tk">public</span> <span class="tk">double</span> area() { <span class="tk">return</span> <span class="tt">Math</span>.<span class="tt">PI</span> * r * r; }
+    }
+
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
+        <span class="tt">List</span>&lt;<span class="tt">Shape</span>&gt; shapes = <span class="tt">List</span>.of(<span class="tk">new</span> <span class="tt">Square</span>(<span class="tn">2</span>), <span class="tk">new</span> <span class="tt">Circle</span>(<span class="tn">1</span>));
+        <span class="tk">for</span> (<span class="tt">Shape</span> s : shapes) {
+            <span class="tt">System</span>.out.printf(<span class="ts">&quot;%s %.2f%n&quot;</span>, s.getClass().getSimpleName(), s.area());  <span class="tc">// decided at run time</span>
+        }
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>Square 4.00
+Circle 3.14</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Interfaces.java &amp;&amp; java Interfaces</code></pre>
+  <p class="setup"><a download href="../examples/Interfaces.java">Download Interfaces.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p>An <code>interface</code> lists methods without bodies; a class that
+     <code>implements</code> it must provide them. The loop holds a <code>List&lt;Shape&gt;</code>
+     and calls <code>area()</code>; which body runs is decided at run time by the actual object.
+     That is <em>polymorphism</em>.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="07-classes.html"><span>← lessons[6]</span>Classes and objects</a>
+    <a class="next" href="09-records.html"><span>lessons[8] →</span>Records, sealed types and patterns</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

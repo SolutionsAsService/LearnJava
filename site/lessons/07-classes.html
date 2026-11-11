@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Classes and objects (lesson 7) · Learn Java</title>
+<meta name="description" content="Java lesson 7: Fields, a constructor, private state and toString.">
+<meta property="og:title" content="Classes and objects (lesson 7) · Learn Java">
+<meta property="og:description" content="Java lesson 7: Fields, a constructor, private state and toString.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[6]</code> · lesson 7 of 13 · Java 5.0+</p>
+  <h1>Classes and objects</h1>
+  <p class="lede">Fields, a constructor, private state and toString.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">Classes.java</span><span class="fmeta">19 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Classes</span> {
+    <span class="tk">static</span> <span class="tk">class</span> <span class="tt">Account</span> {
+        <span class="tk">private</span> <span class="tk">final</span> <span class="tt">String</span> owner;   <span class="tc">// set once, in the constructor</span>
+        <span class="tk">private</span> <span class="tk">long</span> cents;            <span class="tc">// private: only Account can change it</span>
+
+        <span class="tt">Account</span>(<span class="tt">String</span> owner) { <span class="tk">this</span>.owner = owner; }
+
+        <span class="tk">void</span> deposit(<span class="tk">long</span> amount) {
+            <span class="tk">if</span> (amount &lt;= <span class="tn">0</span>) <span class="tk">throw</span> <span class="tk">new</span> <span class="tt">IllegalArgumentException</span>(<span class="ts">&quot;amount must be positive&quot;</span>);
+            cents += amount;
+        }
+
+        <span class="tp">@Override</span>
+        <span class="tk">public</span> <span class="tt">String</span> toString() { <span class="tk">return</span> owner + <span class="ts">&quot;: &quot;</span> + cents / <span class="tn">100</span> + <span class="ts">&quot;.&quot;</span> + <span class="tt">String</span>.format(<span class="ts">&quot;%02d&quot;</span>, cents % <span class="tn">100</span>); }
+    }
+
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
+        <span class="tt">Account</span> a = <span class="tk">new</span> <span class="tt">Account</span>(<span class="ts">&quot;Ada&quot;</span>);
+        a.deposit(<span class="tn">1050</span>);
+        a.deposit(<span class="tn">25</span>);
+        <span class="tt">System</span>.out.println(a);
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>Ada: 10.75</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Classes.java &amp;&amp; java Classes</code></pre>
+  <p class="setup"><a download href="../examples/Classes.java">Download Classes.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p>A class describes objects; <code>new Account("Ada")</code> makes one.
+     <code>private</code> fields can only be changed by the class’s own methods, so
+     <code>deposit</code> can refuse a bad amount. <code>final</code> means the field is set
+     once. Money is kept in whole cents as a <code>long</code>, because a
+     <code>double</code> cannot hold 0.10 exactly.</p>
+     <p><code>@Override</code> on <code>toString</code> tells the compiler to check that it
+     really replaces the method every object inherits from <code>Object</code>; that is the
+     method <code>println</code> calls.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="06-arrays.html"><span>← lessons[5]</span>Arrays</a>
+    <a class="next" href="08-interfaces.html"><span>lessons[7] →</span>Interfaces and polymorphism</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

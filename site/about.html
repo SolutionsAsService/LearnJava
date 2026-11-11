@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About · Learn Java</title>
+<meta name="description" content="How Learn Java is built, and how to get a JDK.">
+<meta property="og:title" content="About · Learn Java">
+<meta property="og:description" content="How Learn Java is built, and how to get a JDK.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="lessons/index.html">Lessons</a></li><li><a href="jvm.html">Inside the JVM</a></li><li><a href="versions.html">Versions</a></li><li><a href="ecosystem.html">Ecosystem</a></li><li><a href="about.html" aria-current="page">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker">java -version</p>
+  <h1>About this site</h1>
+  <p class="lede">One Python script, <code>_src/build.py</code>, compiles every program in <code>examples/</code>, runs it, reads the class file it makes, and writes these pages from the results.</p>
+  <h2>The last build</h2>
+  <p>On 2026-11-11, with <code>javac 21.0.12.1</code>: 13 programs compiled with <code>javac -Xlint:all</code>, 0 warnings, and every one ran and exited 0. With <code>--no-run</code>, or without a JDK, the build reuses those stored results, and this date says when they were made.</p>
+  <h2 id="setup">Getting a JDK</h2>
+  <p>A <em>JDK</em> (Java Development Kit) gives you <code>javac</code> to compile and <code>java</code> to run. You type both in a <em>terminal</em> (Terminal on macOS, a Linux shell, or Windows Terminal).</p>
+  <ul>
+    <li><strong>Any system:</strong> download a free JDK 21 or newer from <a href="https://adoptium.net/">Eclipse Temurin</a> and run its installer.</li>
+    <li><strong>macOS with Homebrew:</strong> <code>brew install openjdk@21</code>.</li>
+    <li><strong>Debian or Ubuntu:</strong> <code class="w">sudo apt install openjdk-21-jdk</code> (<code>sudo</code> asks for your password).</li>
+  </ul>
+  <p>Check it with <code>javac -version</code>. Then download any program from its lesson, open a terminal in that folder, paste the command printed under it, and compare what it prints with the dark output box.</p>
+  <h2>Design</h2>
+  <p>The home page is the real <code>Hello.class</code>, parsed byte by byte at build time. The design decisions and the critique rounds are in <code>DESIGN-LOG.md</code> in the repository. Type: Fraunces and IBM Plex Mono (SIL Open Font Licence), self-hosted.</p>
+  <p>This is an unofficial guide. Java and OpenJDK are trademarks of Oracle and/or its affiliates.</p>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

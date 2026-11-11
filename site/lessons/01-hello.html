@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hello, World (lesson 1) · Learn Java</title>
+<meta name="description" content="Java lesson 1: A class, a main method, one line printed.">
+<meta property="og:title" content="Hello, World (lesson 1) · Learn Java">
+<meta property="og:description" content="Java lesson 1: A class, a main method, one line printed.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[0]</code> · lesson 1 of 13 · Java 1.0+</p>
+  <h1>Hello, World</h1>
+  <p class="lede">A class, a main method, one line printed.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">Hello.java</span><span class="fmeta">7 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tc">// Every Java program starts in a class. This one is named Hello,</span>
+<span class="tc">// so it must live in a file called Hello.java.</span>
+<span class="tk">public</span> <span class="tk">class</span> <span class="tt">Hello</span> {
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;Hello, World!&quot;</span>);
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>Hello, World!</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Hello.java &amp;&amp; java Hello</code></pre>
+  <p class="setup"><a download href="../examples/Hello.java">Download Hello.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p>Java code lives in <em>classes</em>. A class named <code>Hello</code> goes in a file
+     named <code>Hello.java</code>. The program starts at <code>main</code>:
+     <code>public</code> (anyone may call it), <code>static</code> (no object is needed to
+     call it), and <code>void</code> (it returns nothing). <code>String[] args</code> holds
+     any words typed after the program’s name.</p>
+     <p><code>javac</code> compiles the file into <code>Hello.class</code>, and <code>java</code>
+     runs it on the Java Virtual Machine (the JVM). The <a href="../index.html">home page</a> is
+     that very <code>.class</code> file, byte for byte; <a href="../jvm.html">Inside the JVM</a>
+     walks through it.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="index.html"><span>← lessons</span>All lessons</a>
+    <a class="next" href="02-variables.html"><span>lessons[1] →</span>Variables and types</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

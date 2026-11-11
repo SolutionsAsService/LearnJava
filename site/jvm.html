@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inside the JVM · Learn Java</title>
+<meta name="description" content="From Hello.java to bytecode: the real class file, its magic number, version and the bytecode of main.">
+<meta property="og:title" content="Inside the JVM · Learn Java">
+<meta property="og:description" content="From Hello.java to bytecode: the real class file, its magic number, version and the bytecode of main.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="lessons/index.html">Lessons</a></li><li><a href="jvm.html" aria-current="page">Inside the JVM</a></li><li><a href="versions.html">Versions</a></li><li><a href="ecosystem.html">Ecosystem</a></li><li><a href="about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker">Hello.java → javac → Hello.class → java</p>
+  <h1>Inside the JVM</h1>
+  <p class="lede">What happens between typing <code>javac Hello.java</code> and seeing “Hello, World!”, shown with the real file the compiler made.</p>
+  <ol class="pipe" aria-label="The four steps">
+    <li><strong>You write source</strong> <code>Hello.java</code>: text a person can read.</li>
+    <li><strong><code>javac</code> compiles it</strong> to <code>Hello.class</code>: 417 bytes of bytecode, the same on every machine.</li>
+    <li><strong><code>java</code> starts a JVM</strong>, which loads the class, checks it is safe, and runs it.</li>
+    <li><strong>The JIT compiler</strong> turns code that runs often into the machine’s own instructions while the program runs.</li>
+  </ol>
+  <h2 id="magic">The magic number and the version</h2>
+  <p>The first four bytes of every class file are <code>CA FE BA BE</code>. A JVM that reads anything else refuses the file. The next four are the version: minor 0, major 65. Major versions count up from 45 (Java 1.1), so 65 means Java 21, and an older JVM will not run it.</p>
+  <h2 id="bytecode">The bytecode of main</h2>
+  <p>This is what <code>javap -c Hello</code> prints for <code>main</code>. Each line is one instruction for the JVM, which is a <em>stack machine</em>: instructions push values onto a stack and take them off.</p>
+  <pre class="code"><code class="b">public static void main(java.lang.String[]);
+    Code:
+       0: getstatic     #7                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: ldc           #13                 // String Hello, World!
+       5: invokevirtual #15                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       8: return</code></pre>
+  <ul class="ops">
+    <li><code>getstatic</code> pushes <code>System.out</code>, the object that prints.</li>
+    <li><code>ldc</code> pushes the string “Hello, World!” from the constant pool.</li>
+    <li><code>invokevirtual</code> calls <code>println</code> on them.</li>
+    <li><code>return</code> ends <code>main</code>, and with it the program.</li>
+  </ul>
+  <h2>Memory you do not free</h2>
+  <p>Objects live on the <em>heap</em>. When nothing refers to an object any more, the <em>garbage collector</em> reclaims it; there is no <code>free</code> and no <code>delete</code>. The price is that you do not decide exactly when memory comes back.</p>
+  <p class="docs">Further: <a href="https://docs.oracle.com/javase/specs/jvms/se21/html/jvms-4.html">JVM specification, chapter 4: the class file format</a> · <a href="https://docs.oracle.com/en/java/javase/21/docs/specs/man/javap.html">javap</a></p>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

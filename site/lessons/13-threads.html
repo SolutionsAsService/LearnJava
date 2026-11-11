@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Virtual threads (lesson 13) · Learn Java</title>
+<meta name="description" content="Java lesson 13: Ten thousand tasks, each with its own thread, in a fraction of a second.">
+<meta property="og:title" content="Virtual threads (lesson 13) · Learn Java">
+<meta property="og:description" content="Java lesson 13: Ten thousand tasks, each with its own thread, in a fraction of a second.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[12]</code> · lesson 13 of 13 · Java 21+</p>
+  <h1>Virtual threads</h1>
+  <p class="lede">Ten thousand tasks, each with its own thread, in a fraction of a second.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">Threads.java</span><span class="fmeta">16 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tk">import</span> java.util.concurrent.<span class="tt">Executors</span>;
+<span class="tk">import</span> java.util.concurrent.atomic.<span class="tt">AtomicInteger</span>;
+
+<span class="tk">public</span> <span class="tk">class</span> <span class="tt">Threads</span> {
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
+        <span class="tt">AtomicInteger</span> done = <span class="tk">new</span> <span class="tt">AtomicInteger</span>();
+        <span class="tk">try</span> (<span class="tk">var</span> pool = <span class="tt">Executors</span>.newVirtualThreadPerTaskExecutor()) {   <span class="tc">// Java 21: one cheap thread per task</span>
+            <span class="tk">for</span> (<span class="tk">int</span> i = <span class="tn">0</span>; i &lt; <span class="tn">10_000</span>; i++) {
+                pool.submit(() -&gt; {
+                    <span class="tt">Thread</span>.sleep(<span class="tn">10</span>);                                       <span class="tc">// blocks only this virtual thread</span>
+                    <span class="tk">return</span> done.incrementAndGet();
+                });
+            }
+        }                                                                   <span class="tc">// waits for every task</span>
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;tasks finished: &quot;</span> + done.get());
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>tasks finished: 10000</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Threads.java &amp;&amp; java Threads</code></pre>
+  <p class="setup"><a download href="../examples/Threads.java">Download Threads.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p>A <em>thread</em> runs code at the same time as other threads. Platform threads are
+     expensive, so programs used to share a few among many tasks. Virtual threads (Java 21) are
+     cheap enough to give every task its own: here 10,000 tasks each sleep 10 milliseconds,
+     and the pool finishes them together instead of one after another.</p>
+     <p><code>AtomicInteger</code> counts safely from many threads at once; a plain
+     <code>int</code> would lose updates. Leaving the <code>try</code> block waits for every
+     task, so the count is always 10,000.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="12-streams.html"><span>← lessons[11]</span>Lambdas and streams</a>
+    <a class="next" href="../jvm.html"><span>next →</span>Inside the JVM</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

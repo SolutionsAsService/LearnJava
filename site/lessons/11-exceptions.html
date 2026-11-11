@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Exceptions (lesson 11) · Learn Java</title>
+<meta name="description" content="Java lesson 11: try, catch and finally; checked and unchecked; try-with-resources.">
+<meta property="og:title" content="Exceptions (lesson 11) · Learn Java">
+<meta property="og:description" content="Java lesson 11: try, catch and finally; checked and unchecked; try-with-resources.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[10]</code> · lesson 11 of 13 · Java 11+</p>
+  <h1>Exceptions</h1>
+  <p class="lede">try, catch and finally; checked and unchecked; try-with-resources.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">Exceptions.java</span><span class="fmeta">23 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tk">import</span> java.io.*;
+<span class="tk">import</span> java.nio.file.*;
+
+<span class="tk">public</span> <span class="tk">class</span> <span class="tt">Exceptions</span> {
+    <span class="tk">static</span> <span class="tk">int</span> parse(<span class="tt">String</span> s) {
+        <span class="tk">try</span> {
+            <span class="tk">return</span> <span class="tt">Integer</span>.parseInt(s);
+        } <span class="tk">catch</span> (<span class="tt">NumberFormatException</span> e) {          <span class="tc">// unchecked: the compiler does not insist</span>
+            <span class="tt">System</span>.out.println(<span class="ts">&quot;not a number: &quot;</span> + s);
+            <span class="tk">return</span> <span class="tn">0</span>;
+        } <span class="tk">finally</span> {
+            <span class="tt">System</span>.out.println(<span class="ts">&quot;parsed &quot;</span> + s);       <span class="tc">// runs either way</span>
+        }
+    }
+
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) <span class="tk">throws</span> <span class="tt">IOException</span> {   <span class="tc">// checked: must be declared or caught</span>
+        <span class="tt">System</span>.out.println(parse(<span class="ts">&quot;42&quot;</span>) + parse(<span class="ts">&quot;x&quot;</span>));
+
+        <span class="tt">Path</span> file = <span class="tt">Files</span>.createTempFile(<span class="ts">&quot;learnjava&quot;</span>, <span class="ts">&quot;.txt&quot;</span>);
+        <span class="tt">Files</span>.writeString(file, <span class="ts">&quot;one\ntwo\n&quot;</span>);
+        <span class="tk">try</span> (<span class="tt">BufferedReader</span> in = <span class="tt">Files</span>.newBufferedReader(file)) {   <span class="tc">// closed automatically</span>
+            <span class="tt">System</span>.out.println(<span class="ts">&quot;first line: &quot;</span> + in.readLine());
+        }
+        <span class="tt">Files</span>.delete(file);
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>parsed 42
+not a number: x
+parsed x
+42
+first line: one</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Exceptions.java &amp;&amp; java Exceptions</code></pre>
+  <p class="setup"><a download href="../examples/Exceptions.java">Download Exceptions.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p>Read the output in order: both calls to <code>parse</code> run, each printing its own
+     lines, before <code>println</code> prints their sum, 42. <code>finally</code> runs whether
+     or not an exception was thrown.</p>
+     <p>A <em>checked</em> exception such as <code>IOException</code> must be caught or
+     declared with <code>throws</code>, or the program does not compile. An
+     <em>unchecked</em> one such as <code>NumberFormatException</code> need not be.
+     <code>try (…)</code> closes the reader automatically, even after an error.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="10-collections.html"><span>← lessons[9]</span>Collections and generics</a>
+    <a class="next" href="12-streams.html"><span>lessons[11] →</span>Lambdas and streams</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

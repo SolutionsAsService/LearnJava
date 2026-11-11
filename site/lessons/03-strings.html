@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Strings (lesson 3) · Learn Java</title>
+<meta name="description" content="Java lesson 3: == compares objects, equals compares text, and strings never change.">
+<meta property="og:title" content="Strings (lesson 3) · Learn Java">
+<meta property="og:description" content="Java lesson 3: == compares objects, equals compares text, and strings never change.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[2]</code> · lesson 3 of 13 · Java 15+</p>
+  <h1>Strings</h1>
+  <p class="lede">== compares objects, equals compares text, and strings never change.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">Strings.java</span><span class="fmeta">17 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Strings</span> {
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
+        <span class="tt">String</span> a = <span class="ts">&quot;java&quot;</span>;
+        <span class="tt">String</span> b = <span class="tk">new</span> <span class="tt">String</span>(<span class="ts">&quot;java&quot;</span>);
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;a == b: &quot;</span> + (a == b));            <span class="tc">// same object? no</span>
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;a.equals(b): &quot;</span> + a.equals(b));    <span class="tc">// same text? yes</span>
+
+        <span class="tt">String</span> upper = a.toUpperCase();                      <span class="tc">// a new string; a is unchanged</span>
+        <span class="tt">System</span>.out.println(a + <span class="ts">&quot; -&gt; &quot;</span> + upper);
+
+        <span class="tt">StringBuilder</span> sb = <span class="tk">new</span> <span class="tt">StringBuilder</span>();
+        <span class="tk">for</span> (<span class="tk">int</span> i = <span class="tn">1</span>; i &lt;= <span class="tn">3</span>; i++) sb.append(i).append(<span class="ts">&#x27; &#x27;</span>);
+        <span class="tt">System</span>.out.println(sb.toString().trim());
+
+        <span class="tt">String</span> block = <span class="ts">&quot;&quot;&quot;
+            A text block keeps
+            its line breaks.&quot;&quot;&quot;</span>;
+        <span class="tt">System</span>.out.println(block);
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>a == b: false
+a.equals(b): true
+java -&gt; JAVA
+1 2 3
+A text block keeps
+its line breaks.</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Strings.java &amp;&amp; java Strings</code></pre>
+  <p class="setup"><a download href="../examples/Strings.java">Download Strings.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p><code>==</code> asks whether two references point at the <em>same object</em>;
+     <code>equals</code> asks whether the text is the same. Use <code>equals</code> for
+     strings.</p>
+     <p>A <code>String</code> is <em>immutable</em>: <code>toUpperCase</code> returns a new
+     string and leaves the old one alone. To build text piece by piece, use a
+     <code>StringBuilder</code>. Text blocks (three double quotes, <code>&quot;&quot;&quot;</code>, Java 15) keep line breaks.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="02-variables.html"><span>← lessons[1]</span>Variables and types</a>
+    <a class="next" href="04-control-flow.html"><span>lessons[3] →</span>Control flow</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

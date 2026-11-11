@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Records, sealed types and patterns (lesson 9) · Learn Java</title>
+<meta name="description" content="Java lesson 9: Modern Java: data classes in one line, closed hierarchies, and switch on shape.">
+<meta property="og:title" content="Records, sealed types and patterns (lesson 9) · Learn Java">
+<meta property="og:description" content="Java lesson 9: Modern Java: data classes in one line, closed hierarchies, and switch on shape.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[8]</code> · lesson 9 of 13 · Java 21+</p>
+  <h1>Records, sealed types and patterns</h1>
+  <p class="lede">Modern Java: data classes in one line, closed hierarchies, and switch on shape.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">Records.java</span><span class="fmeta">18 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">Records</span> {
+    <span class="tk">sealed</span> <span class="tk">interface</span> <span class="tt">Shape</span> <span class="tk">permits</span> <span class="tt">Circle</span>, <span class="tt">Square</span>, <span class="tt">Rect</span> {}   <span class="tc">// the only three shapes there will ever be</span>
+    <span class="tk">record</span> <span class="tt">Circle</span>(<span class="tk">double</span> r) <span class="tk">implements</span> <span class="tt">Shape</span> {}
+    <span class="tk">record</span> <span class="tt">Square</span>(<span class="tk">double</span> side) <span class="tk">implements</span> <span class="tt">Shape</span> {}
+    <span class="tk">record</span> <span class="tt">Rect</span>(<span class="tk">double</span> w, <span class="tk">double</span> h) <span class="tk">implements</span> <span class="tt">Shape</span> {}
+
+    <span class="tk">static</span> <span class="tk">double</span> area(<span class="tt">Shape</span> s) {
+        <span class="tk">return</span> <span class="tk">switch</span> (s) {                                  <span class="tc">// no default needed: the compiler knows all cases</span>
+            <span class="tk">case</span> <span class="tt">Circle</span> c -&gt; <span class="tt">Math</span>.<span class="tt">PI</span> * c.r() * c.r();
+            <span class="tk">case</span> <span class="tt">Square</span> q -&gt; q.side() * q.side();
+            <span class="tk">case</span> <span class="tt">Rect</span>(<span class="tk">double</span> w, <span class="tk">double</span> h) -&gt; w * h;          <span class="tc">// record pattern: unpack in place</span>
+        };
+    }
+
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
+        <span class="tt">Shape</span>[] shapes = { <span class="tk">new</span> <span class="tt">Circle</span>(<span class="tn">1</span>), <span class="tk">new</span> <span class="tt">Square</span>(<span class="tn">2</span>), <span class="tk">new</span> <span class="tt">Rect</span>(<span class="tn">2</span>, <span class="tn">3</span>) };
+        <span class="tk">for</span> (<span class="tt">Shape</span> s : shapes) <span class="tt">System</span>.out.printf(<span class="ts">&quot;%s -&gt; %.2f%n&quot;</span>, s, area(s));
+        <span class="tt">System</span>.out.println(<span class="tk">new</span> <span class="tt">Square</span>(<span class="tn">2</span>).equals(<span class="tk">new</span> <span class="tt">Square</span>(<span class="tn">2</span>)));  <span class="tc">// records compare by value</span>
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>Circle[r=1.0] -&gt; 3.14
+Square[side=2.0] -&gt; 4.00
+Rect[w=2.0, h=3.0] -&gt; 6.00
+true</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all Records.java &amp;&amp; java Records</code></pre>
+  <p class="setup"><a download href="../examples/Records.java">Download Records.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p>A <code>record</code> (Java 16) is a class for plain data: the compiler writes the
+     constructor, the accessors, <code>equals</code>, <code>hashCode</code> and
+     <code>toString</code>, which is why two <code>Square(2)</code> are equal.</p>
+     <p><code>sealed</code> (Java 17) fixes the list of subtypes, so the <code>switch</code> in
+     <code>area</code> can cover every case with no <code>default</code>; add a fourth shape
+     and it stops compiling. <code class="w">case Rect(double w, double h)</code> is a <em>record
+     pattern</em> (Java 21): it checks the type and unpacks the fields in one step.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="08-interfaces.html"><span>← lessons[7]</span>Interfaces and polymorphism</a>
+    <a class="next" href="10-collections.html"><span>lessons[9] →</span>Collections and generics</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

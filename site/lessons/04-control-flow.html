@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Control flow (lesson 4) · Learn Java</title>
+<meta name="description" content="Java lesson 4: if, a switch that returns a value, and a while loop.">
+<meta property="og:title" content="Control flow (lesson 4) · Learn Java">
+<meta property="og:description" content="Java lesson 4: if, a switch that returns a value, and a while loop.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[3]</code> · lesson 4 of 13 · Java 14+</p>
+  <h1>Control flow</h1>
+  <p class="lede">if, a switch that returns a value, and a while loop.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">ControlFlow.java</span><span class="fmeta">24 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tk">public</span> <span class="tk">class</span> <span class="tt">ControlFlow</span> {
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
+        <span class="tk">int</span> temperature = <span class="tn">18</span>;
+        <span class="tk">if</span> (temperature &gt; <span class="tn">25</span>) {
+            <span class="tt">System</span>.out.println(<span class="ts">&quot;hot&quot;</span>);
+        } <span class="tk">else</span> <span class="tk">if</span> (temperature &gt; <span class="tn">15</span>) {
+            <span class="tt">System</span>.out.println(<span class="ts">&quot;mild&quot;</span>);
+        } <span class="tk">else</span> {
+            <span class="tt">System</span>.out.println(<span class="ts">&quot;cold&quot;</span>);
+        }
+
+        <span class="tt">String</span> day = <span class="ts">&quot;SAT&quot;</span>;
+        <span class="tt">String</span> kind = <span class="tk">switch</span> (day) {         <span class="tc">// a switch expression returns a value</span>
+            <span class="tk">case</span> <span class="ts">&quot;SAT&quot;</span>, <span class="ts">&quot;SUN&quot;</span> -&gt; <span class="ts">&quot;weekend&quot;</span>;
+            <span class="tk">default</span> -&gt; <span class="ts">&quot;weekday&quot;</span>;
+        };
+        <span class="tt">System</span>.out.println(day + <span class="ts">&quot; is a &quot;</span> + kind);
+
+        <span class="tk">int</span> n = <span class="tn">27</span>, steps = <span class="tn">0</span>;
+        <span class="tk">while</span> (n != <span class="tn">1</span>) {
+            n = (n % <span class="tn">2</span> == <span class="tn">0</span>) ? n / <span class="tn">2</span> : <span class="tn">3</span> * n + <span class="tn">1</span>;
+            steps++;
+        }
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;27 reaches 1 in &quot;</span> + steps + <span class="ts">&quot; steps&quot;</span>);
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>mild
+SAT is a weekend
+27 reaches 1 in 111 steps</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all ControlFlow.java &amp;&amp; java ControlFlow</code></pre>
+  <p class="setup"><a download href="../examples/ControlFlow.java">Download ControlFlow.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p>The <code>switch</code> here is an <em>expression</em> (Java 14): each arrow
+     <code>-&gt;</code> gives a value, there is no fall-through, and the result goes straight
+     into <code>kind</code>. The <code>while</code> loop follows the Collatz rule from 27;
+     nobody can say in advance how many steps it takes, which is what <code>while</code> is
+     for.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="03-strings.html"><span>← lessons[2]</span>Strings</a>
+    <a class="next" href="05-methods.html"><span>lessons[4] →</span>Methods</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,125 @@
+{
+ "jdk": "javac 21.0.12.1",
+ "built": "2026-11-11",
+ "runs": {
+  "Hello": {
+   "command": "javac -Xlint:all Hello.java && java Hello",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "Hello, World!",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "Variables": {
+   "command": "javac -Xlint:all Variables.java && java Variables",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "Ada is 30, grade A\nstars: 100000000000, open: true, price: 4.5\nint is 4 bytes, long is 8 bytes\nlargest int: 2147483647\nlargest int + 1: -2147483648",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "Strings": {
+   "command": "javac -Xlint:all Strings.java && java Strings",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "a == b: false\na.equals(b): true\njava -> JAVA\n1 2 3\nA text block keeps\nits line breaks.",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "ControlFlow": {
+   "command": "javac -Xlint:all ControlFlow.java && java ControlFlow",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "mild\nSAT is a weekend\n27 reaches 1 in 111 steps",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "Methods": {
+   "command": "javac -Xlint:all Methods.java && java Methods",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "5\n2.75\n20! = 2432902008176640000",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "ArraysDemo": {
+   "command": "javac -Xlint:all ArraysDemo.java && java ArraysDemo",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "length: 4\ntotal: 316\nsorted: [61, 72, 88, 95]\nchecked at run time: Index 4 out of bounds for length 4",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "Classes": {
+   "command": "javac -Xlint:all Classes.java && java Classes",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "Ada: 10.75",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "Interfaces": {
+   "command": "javac -Xlint:all Interfaces.java && java Interfaces",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "Square 4.00\nCircle 3.14",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "Records": {
+   "command": "javac -Xlint:all Records.java && java Records",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "Circle[r=1.0] -> 3.14\nSquare[side=2.0] -> 4.00\nRect[w=2.0, h=3.0] -> 6.00\ntrue",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "CollectionsDemo": {
+   "command": "javac -Xlint:all CollectionsDemo.java && java CollectionsDemo",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "[Java, Kotlin, Scala, Groovy, Clojure]\n{Java=1996, Kotlin=2016, Scala=2004}\nunique: 2\nlargest: Scala, 9",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "Exceptions": {
+   "command": "javac -Xlint:all Exceptions.java && java Exceptions",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "parsed 42\nnot a number: x\nparsed x\n42\nfirst line: one",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "Streams": {
+   "command": "javac -Xlint:all Streams.java && java Streams",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "Clojure, Groovy, Kotlin, Scala\naverage year: 2005",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  },
+  "Threads": {
+   "command": "javac -Xlint:all Threads.java && java Threads",
+   "compiled": true,
+   "warnings": [],
+   "stdout": "tasks finished: 10000",
+   "exit": 0,
+   "min_release_ok": true,
+   "min_release_tight": true
+  }
+ },
+ "hello_class": "cafebabe00000041001d0a000200030700040c000500060100106a6176612f6c616e672f4f626a6563740100063c696e69743e010003282956090008000907000a0c000b000c0100106a6176612f6c616e672f53797374656d0100036f75740100154c6a6176612f696f2f5072696e7453747265616d3b08000e01000d48656c6c6f2c20576f726c64210a001000110700120c001300140100136a6176612f696f2f5072696e7453747265616d0100077072696e746c6e010015284c6a6176612f6c616e672f537472696e673b295607001601000548656c6c6f010004436f646501000f4c696e654e756d6265725461626c650100046d61696e010016285b4c6a6176612f6c616e672f537472696e673b295601000a536f7572636546696c6501000a48656c6c6f2e6a617661002100150002000000000002000100050006000100170000001d00010001000000052ab70001b10000000100180000000600010000000300090019001a00010017000000250002000100000009b20007120db6000fb10000000100180000000a000200000005000800060001001b00000002001c",
+ "javap": "Compiled from \"Hello.java\"\npublic class Hello {\n  public Hello();\n    Code:\n       0: aload_0\n       1: invokespecial #1                  // Method java/lang/Object.\"<init>\":()V\n       4: return\n\n  public static void main(java.lang.String[]);\n    Code:\n       0: getstatic     #7                  // Field java/lang/System.out:Ljava/io/PrintStream;\n       3: ldc           #13                 // String Hello, World!\n       5: invokevirtual #15                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V\n       8: return\n}"
+}

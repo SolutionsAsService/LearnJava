@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arrays (lesson 6) · Learn Java</title>
+<meta name="description" content="Java lesson 6: A fixed-length row of values, sorted, and checked at every index.">
+<meta property="og:title" content="Arrays (lesson 6) · Learn Java">
+<meta property="og:description" content="Java lesson 6: A fixed-length row of values, sorted, and checked at every index.">
+<meta property="og:image" content="https://learnjava.shadw.app/og.png">
+<meta name="theme-color" content="#f2ead9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17100b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/ibm-plex-mono-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../index.html"><span class="mark-hex" aria-hidden="true">CAFE</span><span>Learn Java</span></a>
+  <nav aria-label="Site"><ul><li><a href="../index.html">Home</a></li><li><a href="../lessons/index.html" aria-current="page">Lessons</a></li><li><a href="../jvm.html">Inside the JVM</a></li><li><a href="../versions.html">Versions</a></li><li><a href="../ecosystem.html">Ecosystem</a></li><li><a href="../about.html">About</a></li></ul></nav>
+</header>
+<main id="main">
+<article class="wrap">
+  <p class="kicker"><a href="index.html">Lessons</a> · <code>lessons[5]</code> · lesson 6 of 13 · Java 5.0+</p>
+  <h1>Arrays</h1>
+  <p class="lede">A fixed-length row of values, sorted, and checked at every index.</p>
+  <figure class="ex">
+  <figcaption><span class="fname">ArraysDemo.java</span><span class="fmeta">17 lines</span></figcaption>
+  <pre class="code"><code class="b"><span class="tk">import</span> java.util.<span class="tt">Arrays</span>;
+
+<span class="tk">public</span> <span class="tk">class</span> <span class="tt">ArraysDemo</span> {
+    <span class="tk">public</span> <span class="tk">static</span> <span class="tk">void</span> main(<span class="tt">String</span>[] args) {
+        <span class="tk">int</span>[] scores = {<span class="tn">72</span>, <span class="tn">95</span>, <span class="tn">88</span>, <span class="tn">61</span>};
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;length: &quot;</span> + scores.length);
+
+        <span class="tk">int</span> total = <span class="tn">0</span>;
+        <span class="tk">for</span> (<span class="tk">int</span> s : scores) total += s;          <span class="tc">// the enhanced for loop</span>
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;total: &quot;</span> + total);
+
+        <span class="tt">Arrays</span>.sort(scores);
+        <span class="tt">System</span>.out.println(<span class="ts">&quot;sorted: &quot;</span> + <span class="tt">Arrays</span>.toString(scores));
+
+        <span class="tk">try</span> {
+            <span class="tt">System</span>.out.println(scores[<span class="tn">4</span>]);
+        } <span class="tk">catch</span> (<span class="tt">ArrayIndexOutOfBoundsException</span> e) {
+            <span class="tt">System</span>.out.println(<span class="ts">&quot;checked at run time: &quot;</span> + e.getMessage());
+        }
+    }
+}
+</code></pre>
+  <div class="out"><div class="out-h"><span>Output</span><span>exit 0 · 0 warnings</span></div><pre><samp>length: 4
+total: 316
+sorted: [61, 72, 88, 95]
+checked at run time: Index 4 out of bounds for length 4</samp></pre></div>
+  <div class="cmd"><p class="cmd-h">Compile and run it yourself</p><pre><code class="b">javac -Xlint:all ArraysDemo.java &amp;&amp; java ArraysDemo</code></pre>
+  <p class="setup"><a download href="../examples/ArraysDemo.java">Download ArraysDemo.java</a>, open a terminal in the folder you saved it to, and paste the command. No JDK yet? <a href="../about.html#setup">How to get one</a>.</p></div>
+</figure>
+  <div class="notes"><p>An array’s length is fixed when it is created and read with <code>.length</code>.
+     The enhanced <code>for</code> loop visits each element. Unlike C, Java checks every index:
+     reading past the end throws an <code class="w">ArrayIndexOutOfBoundsException</code> instead of
+     reading whatever memory follows. The program catches it to print the message; the
+     <a href="11-exceptions.html">exceptions lesson</a> explains catching.</p></div>
+  <nav class="pager" aria-label="Lessons">
+    <a class="prev" href="05-methods.html"><span>← lessons[4]</span>Methods</a>
+    <a class="next" href="07-classes.html"><span>lessons[6] →</span>Classes and objects</a>
+  </nav>
+</article>
+</main>
+<footer class="foot">
+  <p>Every program on this site was compiled with <code>javac -Xlint:all</code> on 2026-11-11 and run; the output shown is what it printed. <a href="../about.html">How</a> · <a href="https://github.com/SolutionsAsService/LearnJava">Source</a> · MIT licence.</p>
+  <p>An unofficial guide. Java is a trademark of Oracle and/or its affiliates.</p>
+</footer>
+</body>
+</html>
