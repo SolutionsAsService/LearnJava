@@ -79,7 +79,8 @@ main { padding: 0 16px 64px; }
 @media (prefers-color-scheme: dark) { .start { background: var(--crema); border-color: var(--crema); color: #18110c; } .mark-hex { background: var(--crema); color: #18110c; } }
 @media (hover: hover) and (pointer: fine) { .start:hover { background: transparent; color: var(--ink); } }
 
-.cup { grid-area: cup; margin: 0 auto; width: min(100%, 340px); filter: drop-shadow(0 0 1.5px var(--ink-2)); }
+.cup { grid-area: cup; margin: 0 auto; width: min(100%, 340px); }
+.glass-wrap { filter: drop-shadow(0 0 1.5px var(--ink-2)); }
 .steam { display: block; width: 46%; margin: 0 auto -4px; height: auto; }
 .steam path { fill: none; stroke: var(--rule); stroke-width: 3; stroke-linecap: round; }
 .glass { list-style: none; margin: 0; padding: 0; display: grid;
@@ -93,15 +94,17 @@ main { padding: 0 16px 64px; }
 .ly-t { font: 700 18px/1.2 var(--serif); }
 .ly-l { font-size: 15px; line-height: 1.3; }
 @media (hover: hover) and (pointer: fine) { .layer a:hover .ly-t { text-decoration: underline; } }
-.layer a:focus-visible { outline-offset: -5px; }
+.layer a:focus-visible { outline: 3px solid var(--ink); outline-offset: -6px; box-shadow: inset 0 0 0 6px var(--foam); }
+.glass:focus-within { clip-path: none; }
+@media (prefers-color-scheme: dark) { .layer a:focus-visible { outline-color: #18110c; box-shadow: inset 0 0 0 6px #fff6e6; } }
 .saucer { margin: 6px auto 0; padding: 8px 12px; border-top: 6px solid var(--rule); border-radius: 50% / 0 0 100% 100%; text-align: center; font-size: 15px; line-height: 1.4; color: var(--ink-2); }
 .saucer code { font-weight: 700; color: var(--ink); }
 
-.menu { grid-area: menu; background: var(--board); color: var(--board-ink); border-radius: 10px; padding: 16px 16px 10px; border: 8px solid #5a4231; }
+.menu { grid-area: menu; background: var(--board); color: var(--board-ink); border-radius: 10px; padding: 16px 16px 10px; border: 5px solid #7a5a43; }
 .menu-h { font: italic 400 30px/1 var(--serif); margin: 0 0 10px; display: flex; justify-content: space-between; align-items: baseline; }
 .menu-h span { font: 600 13px var(--mono); color: var(--board-2); font-style: normal; }
 .menu ol { list-style: none; margin: 0; padding: 0; }
-.menu a { display: grid; grid-template-columns: 2.1em auto minmax(1em, 1fr) auto; align-items: baseline; gap: 0 6px; min-height: 44px; padding: 10px 0 0; color: var(--board-ink); text-decoration: none; border-bottom: 1px solid #ffffff1a; }
+.menu a { display: grid; grid-template-columns: 2.1em minmax(0, auto) minmax(1em, 1fr) auto; align-items: baseline; gap: 0 6px; min-height: 44px; padding: 10px 0 8px; color: var(--board-ink); text-decoration: none; border-bottom: 1px solid #ffffff1a; }
 .mn { font: 600 14px var(--mono); color: var(--crema); }
 .mt { font: 600 17px/1.2 var(--serif); }
 .mdots { border-bottom: 2px dotted var(--board-2); transform: translateY(-4px); opacity: .55; }
@@ -111,10 +114,14 @@ main { padding: 0 16px 64px; }
 
 @media (min-width: 1000px) {
   main { padding: 0 32px 72px; }
-  .hero { grid-template-columns: minmax(0, 1fr) 320px minmax(0, 1.05fr); grid-template-areas: "text cup menu"; gap: 32px; align-items: start; padding-top: 28px; }
+  .hero { grid-template-columns: minmax(0, 1fr) 400px minmax(0, 1fr); grid-template-areas: "text cup menu"; gap: 32px; align-items: start; padding-top: 16px; }
   .hero-text { padding-top: 24px; }
-  .cup { width: 320px; }
-  .menu a { min-height: 44px; padding-top: 9px; }
+  .cup { width: 400px; align-self: center; }
+  .layer a { min-height: 84px; } .layer.foam a { min-height: 74px; } .layer.espresso a { min-height: 104px; }
+  .ly-t { font-size: 21px; } .ly-l { font-size: 16px; }
+  .menu a { min-height: 44px; padding: 6px 0 4px; align-content: center; }
+  .menu { padding: 12px 14px 8px; }
+  .menu-h { font-size: 26px; margin-bottom: 4px; }
 }
 
 /* ---------- the class file (JVM page) ---------- */
@@ -212,3 +219,6 @@ main { padding: 0 16px 64px; }
   .num, .badge, .seg { border: 1px solid CanvasText; }
   .glass { clip-path: none; }
 }
+.dag { color: var(--crema); margin-left: 1px; }
+.menu-note { font-size: 13px; line-height: 1.45; color: var(--board-2); margin: 10px 0 2px; }
+.menu-note code { background: transparent; color: var(--board-ink); font-size: 1em; }

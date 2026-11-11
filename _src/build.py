@@ -207,34 +207,38 @@ def ribbon(cls, runs, up=""):
             f'<a href="{up}jvm.html">What these parts are</a></figcaption></figure>')
 
 
+NUMWORD = {10: "ten", 11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen", 15: "fifteen"}
+
+
 def hero(runs):
     """The home page is a latte: four layers, each a part of the site, and a menu board of the lessons."""
     b = bytes.fromhex(runs["hello_class"])
     n_tools = sum(len(links) for _, _, links in K.ECOSYSTEM)
     first, last = K.VERSIONS[0][1], K.VERSIONS[-1][1]
     layers = [
-        ("foam", "ecosystem.html", "Ecosystem", f"{len(K.ECOSYSTEM)} families of tools, {n_tools} links"),
-        ("milk", "versions.html", "Versions", f"Java {first} to {last}, and which lesson needs which"),
+        ("foam", "ecosystem.html", "Ecosystem", f"tools, frameworks and languages: {n_tools} links"),
+        ("milk", "versions.html", "Versions", f"Java {first} to {last}, the current long-term release"),
         ("caramel", "jvm.html", "Inside the JVM", f"Hello.class, all {len(b)} bytes of it"),
         ("espresso", "lessons/index.html", "The lessons", f"{len(K.LESSONS)} small programs, compiled and run"),
     ]
     glass = "".join(f'<li class="layer {c}"><a href="{h}"><span class="ly-t">{html.escape(t)} →</span><span class="ly-l">{html.escape(l)}</span></a></li>'
                     for c, h, t, l in layers)
     menu = "".join(f'<li><a href="{lesson_href(i)}"><span class="mn">{i + 1:02d}</span><span class="mt">{html.escape(L[2])}</span>'
-                   f'<span class="mdots" aria-hidden="true"></span><span class="mp">Java {L[5]}+</span></a></li>' for i, L in enumerate(K.LESSONS))
+                   f'<span class="mdots" aria-hidden="true"></span><span class="mp">Java {L[5]}+{"<span class=dag title=\'From the language history, not compiled\'>†</span>" if K_min(L) < 8 else ""}</span></a></li>' for i, L in enumerate(K.LESSONS))
     return f"""<section class="hero" aria-labelledby="h1">
   <div class="hero-text">
-    <p class="kicker">Thirteen small programs, each compiled and run</p>
+    <p class="kicker">{NUMWORD.get(len(K.LESSONS), str(len(K.LESSONS))).capitalize()} small programs, each compiled and run</p>
     <h1 id="h1">Learn Java, <span>brewed one program at a time</span></h1>
     <p class="lede">Start with a shot of <code>Hello, World</code> and work up to records and virtual threads. Every program on this site was compiled and run, and shows what it printed.</p>
     <a class="start" href="lessons/01-hello.html">Start lesson 01 →</a>
   </div>
   <figure class="cup">
     <svg class="steam" viewBox="0 0 120 40" aria-hidden="true"><path d="M30 38c-8-8 8-12 0-22s6-12 4-16M60 38c-8-8 8-12 0-22s6-12 4-16M90 38c-8-8 8-12 0-22s6-12 4-16"/></svg>
-    <ol class="glass" aria-label="The site, layer by layer">{glass}</ol>
+    <div class="glass-wrap"><ol class="glass" aria-label="The site, layer by layer">{glass}</ol></div>
     <figcaption class="saucer"><code>0xCAFEBABE</code> <span>every class file starts with these bytes. <a href="jvm.html#magic">Why</a></span></figcaption>
   </figure>
-  <nav class="menu" aria-labelledby="menu-h"><p class="menu-h" id="menu-h">Menu <span>{len(K.LESSONS)} lessons</span></p><ol>{menu}</ol></nav>
+  <nav class="menu" aria-labelledby="menu-h"><p class="menu-h" id="menu-h">Menu <span>{len(K.LESSONS)} lessons</span></p><ol>{menu}</ol>
+    <p class="menu-note">Price: the oldest Java each lesson compiles under, proven with <code>javac --release</code> from Java 8 on. † From the language's history.</p></nav>
 </section>"""
 
 
@@ -482,7 +486,7 @@ def build_about(runs):
   </ul>
   <p>Check it with <code>javac -version</code>. Then download any program from its lesson. In the terminal, move to the folder it saved to with <code>cd</code> (for example <code>cd Downloads</code>), paste the two lines printed under the program, and compare what it prints with the dark output box.</p>
   <h2>Design</h2>
-  <p>The home page is the real <code>Hello.class</code>, parsed byte by byte at build time. The design decisions and the critique rounds are in <code>DESIGN-LOG.md</code> in the repository. Type: Fraunces and IBM Plex Mono (SIL Open Font Licence), self-hosted.</p>
+  <p>The home page is a latte whose four layers link the site, and a menu of the lessons. <a href="jvm.html">Inside the JVM</a> shows the real <code>Hello.class</code>, parsed byte by byte at build time. The design decisions and the critique rounds are in <code>DESIGN-LOG.md</code> in the repository. Type: Fraunces and IBM Plex Mono (SIL Open Font Licence), self-hosted.</p>
   <p>This is an unofficial guide. Java and OpenJDK are trademarks of Oracle and/or its affiliates.</p>
 </article>"""
     page("about.html", "About", body, "How Learn Java is built, and how to get a JDK.", active="about.html")

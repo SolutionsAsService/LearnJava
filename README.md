@@ -1,6 +1,8 @@
 # Learn Java, from the bytes up
 
-A static website that teaches Java in thirteen programs, from `main` to virtual threads. Its home page is the real `Hello.class` that `javac` makes from lesson 01, drawn byte by byte. The file's six parts (magic number, version, constant pool, class header, methods and attributes) each lead to the page that explains them.
+A static website that teaches Java in thirteen programs, from `main` to virtual threads. Its home page is a café: a latte glass whose four layers link the site, and a chalkboard menu of the lessons. The *Inside the JVM* page draws the real `Hello.class` that `javac` makes from lesson 01, byte by byte, in its six parts. Every lesson shows a ribbon of the class files its program becomes.
+
+The earlier home page, the hex dump of `Hello.class` (graded B+ by the owner), is kept on the branch `design/hexdump-b-plus`.
 
 Every program is compiled with `javac -Xlint:all` and run when the site is built, and each lesson shows the output it actually printed. The build also proves each lesson's stated minimum Java version with `javac --release`.
 

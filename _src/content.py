@@ -144,7 +144,7 @@ VERSIONS = [
     (2021, "16", "Records: a one-line class for plain data.", False),
     (2021, "17", "Sealed classes.", True),
     (2023, "21", "Virtual threads, record patterns and pattern matching for switch.", True),
-    (2025, "25", "The current long-term-support release.", True),
+    (2025, "25", "The current long-term-support release. This list stops here: the six-monthly releases after it are not yet covered by any lesson.", True),
 ]
 
 ECOSYSTEM = [

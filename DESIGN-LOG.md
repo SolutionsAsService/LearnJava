@@ -210,3 +210,82 @@ Measured after the edit: 20 pages × 3 sizes × 2 schemes; 0 overflow; smallest 
 
 ## Move M9: R2 corrections (KEEP-THE-RULE)
 Depends on: M6, M7. True-width ribbons over every class file, two-line commands, accessible card names, and the setup and claim fixes above.
+
+
+### Panel, Landing round R3 (artifact: the café home page after M8 and M9; reports in panel/R3/)
+| Critic | Anchor used | Observed in the work | Verdict PASS/OBJECT | Requested change |
+|---|---|---|---|---|
+| Critic: Usability (Krug) | Don't Make Me Think (Steve Krug) | five-second test passes at both sizes; the JVM layer keeps its promise; menu row 09 wraps onto a divider | PASS | let row 09 grow |
+| Critic: Evidence (Cairo) | How Charts Lie (Alberto Cairo) | rebuild identical; every glass and menu figure matches; the R2 fixes hold; the 1.0 and 5.0 prices look proven; "Thirteen" is a literal | PASS | mark the pre-8 prices; compute the kicker |
+| Critic: Formalist (Arnheim) | Art and Visual Perception (Rudolf Arnheim) | the board outweighs the glass and the field tips right; an empty band at the lower left; row 09; the four layers read as distinct | OBJECT | scale the glass about 1.3× and centre it; lighten the board's frame; row 09 |
+| Critic: Provocateur (Debord) | The Society of the Spectacle (Guy Debord) | the hero is backed (every figure computed); About and README still call the home page Hello.class; "1.0 to 25" against six-monthly releases; "6 families of tools" | OBJECT | fix the stale sentence; qualify 25; "tools, frameworks and languages" |
+| Critic: Inclusion (Mace) | The Universal Design principles (Ronald Mace) | targets, the start and menu rings, forced colours pass; the layer ring sits on the fill at 1.27–2.24:1 and the clip-path cuts its sides off | OBJECT | a two-tone ring; lift the clip on focus |
+
+Andon pulled: no. Dotted pair present: Krug and Debord.
+
+#### Resolutions, round R3
+| Finding | Resolution |
+|---|---|
+| Arnheim: "the board outweighs the glass" | ADAPT (M10): the glass grows from 320 to 400 px (1.25×) and is centred vertically against the board; the board's frame goes from 8 px #5a4231 to 5 px #7a5a43 |
+| Arnheim + Krug: "row 09 wraps onto the divider" | ADAPT (M10): menu rows grow with their title (rows 08 and 09 take two lines) |
+| Debord: "About/README call the home page Hello.class" | ADAPT (M10): both now describe the café, and say the hex dump is on the JVM page and on the branch `design/hexdump-b-plus` |
+| Debord: "1.0 to 25 vs six-monthly releases" | ADAPT (M10): "Java 1.0 to 25, the current long-term release", and Versions says the list stops at 25 |
+| Debord: "6 families of tools" | ADAPT (M10): "tools, frameworks and languages: 14 links" |
+| Cairo: "the 1.0 and 5.0 prices look proven" | ADAPT (M10): a † on the four pre-8 prices, explained in a note on the board itself |
+| Cairo: "'Thirteen' is a literal" | ADAPT (M10): computed from the lesson count |
+| Mace: "focus ring invisible inside the glass" | ADAPT (M10): a two-tone ring (3 px ink outline over a 6 px foam inset), and the glass drops its clip-path while a layer has focus |
+
+## Move M10: R3 corrections and balance (KEEP-THE-RULE)
+Depends on: M8. Anchors: Rule Thinking with Type (Ellen Lupton) | Floor WCAG 2.2 Contrast and Perceivability (W3C).
+Measured after the last edit: 20 pages × 1280x800, 375x812 and 390x844 × light and dark: 0 overflow, smallest text 12 px, 0 targets under 44 px. At 1280x800 the menu ends at 790 and the glass at 603. At 375x812 the glass ends at 684 and the saucer at 754; the menu follows below the fold (the layers link every page). An inert lever is logged: a drop-shadow on `.cup` also blurred the saucer's text, so the shadow moved to a wrapper around the glass alone.
+
+## 2g. Displayed figures at the final state
+| Printed figure | Procedure | Value | Status |
+|---|---|---|---|
+| 13 lessons / "Thirteen" | `len(content.LESSONS)` | 13 | computed |
+| 417 bytes | javac on Hello.java | 417 | computed; Cairo reproduced it |
+| 28 pool entries, major 65, main 9 bytes | parse_class, checked against `javap -v` | 28 / 65 / 9 | computed |
+| 14 links (Ecosystem) | sum over content.ECOSYSTEM | 14 | computed |
+| Java 1.0 to 25 | content.VERSIONS first and last rows | 1.0 / 25 | data |
+| Menu prices | content.LESSONS; `javac --release` passes at N and fails at N-1, for 8 and up | all 9 checked pass; 4 marked † | checked |
+| Ribbon byte counts (13 lessons) | sum of parse_class over every .class file javac wrote | Records: 5 files, 6,011 bytes | computed; Cairo and Tufte reproduced it |
+| "100 seconds" (lesson 13) | 10,000 × 10 ms | 100 s | arithmetic |
+| Quoted outputs | whole-line check against runs.json | all pass | checked by the build |
+
+## Stop test
+- **S1** met: every objection is ADAPT, OVERRULE (with a measurement) or DEFERRED (the javap block scrolls inside its own box).
+- **S2** met in part. The required seats' last verdicts: Krug, Cairo and Mace PASS (Krug R3, Cairo R3, Mace R2); Holmes, Debord and Tufte OBJECT in their last rounds, with every finding applied since; Shklovsky and Gautier last sat in R1, on the hex-dump home page. No single WHOLE round has had every required seat pass. **Not fully met.**
+- **S3 NOT met**: every round produced ADAPTs.
+- **S4** met before the owner's grade, by escalation: the magic number from headline size to clamp(60px, 7.2vw, 120px), the largest element, and the class file carried into every lesson (M7). The owner's grade then ordered a frame swap (M8) whose own push, the glass at 1.25×, was measured (M10).
+- **S5**: `mcluhan -.-> carson` applied (M3, then superseded by M8); `wcag -.-> carson` applied as the floor.
+- The run stops here at the owner's direction. To resume: convene Shklovsky, Gautier, Holmes, Tufte and Debord on the café as it stands.
+
+## Anchor Ledger
+| Anchor | Role | Status | Evidence |
+|---|---|---|---|
+| A Designer's Art (Paul Rand) | Stance | KEEP | wit survives in the saucer's `0xCAFEBABE` and the menu prices |
+| Thinking with Type (Ellen Lupton) | Rule | KEEP | the byte cell sets the code column; the 74-column programs |
+| Grid Systems in Graphic Design (Josef Müller-Brockmann) | Rule | ADAPT | the 16-byte grid now lives on the JVM page |
+| The Medium Is the Massage (Marshall McLuhan, Quentin Fiore) | Breaker | ADAPT | the class file left the home page after the owner's B+ ("more coffee"), and stays on the JVM page and in every lesson's ribbon |
+| The End of Print (David Carson, Lewis Blackwell) | Counterpoint | SCRAP on home, KEEP on the JVM page | the giant magic number is retired from the home page |
+| WCAG 2.2 Contrast and Perceivability (W3C) | Floor | KEEP | every round's focus and contrast fixes |
+
+## Double loop
+The panel judged the hex dump true, legible and strange, and still the owner graded it B+, because it was cool where Java's own name is warm. No seat holds "does this feel like its subject": Shklovsky asks whether it is strange, Arnheim whether it balances, Cairo whether it is true. **Graph amendment:** on a learning site, seat a critic of subject character (a Sharp or Hara seat: "does the first screen feel like the thing it teaches?") from R1, and treat a name that invites a theme (Java and coffee) as a Frontier candidate, not a cliché to be refused. M3's rejection of "a coffee cup, a cliché" was the run's costliest decision.
+
+## Carry-Forward Ledger
+See `CARRY-FORWARD.md`.
+
+## Compliance Check
+- [x] Tooling inventory; mode (Adaptive) and run type (Full, from scratch) stated with reasons
+- [x] Panel seated from `pick_panel.py`; Landing panel (Arnheim, Cairo, Krug, Debord, plus Mace) for the frame swap
+- [x] Seed with exact labels, a dotted counterpoint and a Frontier
+- [x] Landing graphic summarizes every topic, measured complete at 1280x800 (menu 790) and 375x812 (glass 684, saucer 754)
+- [x] BREAK moves (M3, M7, M8)
+- [x] Decision Records before each move (M1–M10)
+- [x] Panel Reports R1, R2 (six seats) and R3 (Landing, five seats). R1 ran four seats at once against the limit of three
+- [x] Every OBJECT resolved
+- [ ] S2 not fully met, and S3 not met (see Stop test)
+- [x] Every displayed figure re-measured at the final state (2g)
+- [x] Anchor Ledger, double loop, carry-forward
+- [x] Human grade recorded (B+, on the hex-dump version)
